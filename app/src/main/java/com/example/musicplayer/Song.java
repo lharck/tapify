@@ -7,18 +7,18 @@ import android.util.Log;
 public class Song implements Parcelable {
     private String title;
     private String artist;
-    private String data;
+    private String path;
 
-    public Song(String title, String artist, String data) {
+    public Song(String title, String artist, String path) {
         this.title = title;
         this.artist = artist;
-        this.data = data;
+        this.path = path;
     }
 
     protected Song(Parcel in) {
         title = in.readString();
         artist = in.readString();
-        data = in.readString();
+        path = in.readString();
     }
 
     public static final Creator<Song> CREATOR = new Creator<Song>() {
@@ -49,12 +49,12 @@ public class Song implements Parcelable {
         this.artist = artist;
     }
 
-    public String getData() {
-        return data;
+    public String getPath() {
+        return path;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     @Override
@@ -63,14 +63,14 @@ public class Song implements Parcelable {
     }
 
     public void printData(){
-        String data = "\nTitle:" + this.title + "\nArtist:"  + this.artist + "\nData:" + this.data;
-        Log.d("MainAction", data);
+        String path = "\nTitle:" + this.title + "\nArtist:"  + this.artist + "\nPath:" + this.path;
+        Log.d("MainAction", path);
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(title);
         dest.writeString(artist);
-        dest.writeString(data);
+        dest.writeString(path);
     }
 }

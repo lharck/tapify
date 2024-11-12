@@ -100,11 +100,11 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="149dp"
-        android:layout_height="72dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
+        android:layout_width="218dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Home"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

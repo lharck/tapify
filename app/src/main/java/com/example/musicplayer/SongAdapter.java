@@ -78,7 +78,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
     private void playSong(Song song, int position) {
         try {
             mediaPlayer.reset();
-            mediaPlayer.setDataSource(song.getData());
+            mediaPlayer.setDataSource(song.getPath());
             mediaPlayer.prepare();
             mediaPlayer.start();
             isPaused = false;

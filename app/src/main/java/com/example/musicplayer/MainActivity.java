@@ -51,9 +51,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         try {
-            String musicPath = "/storage/emulated/0/Music/APMMusic/StrangeTropics/song.mp3";
             mediaPlayer = new MediaPlayer();
-            mediaPlayer.setDataSource(musicPath);
+            mediaPlayer.setDataSource(songs.get(0).getPath());
             mediaPlayer.prepare();
             mediaPlayer.start();
             Toast.makeText(this, "Playing Music", Toast.LENGTH_SHORT).show();
