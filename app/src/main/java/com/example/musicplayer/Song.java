@@ -2,6 +2,7 @@ package com.example.musicplayer;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 public class Song implements Parcelable {
     private String title;
@@ -59,6 +60,11 @@ public class Song implements Parcelable {
     @Override
     public int describeContents() {
         return 0;
+    }
+
+    public void printData(){
+        String data = "\nTitle:" + this.title + "\nArtist:"  + this.artist + "\nData:" + this.data;
+        Log.d("MainAction", data);
     }
 
     @Override

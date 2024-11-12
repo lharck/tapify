@@ -8,6 +8,8 @@ import android.Manifest;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     private PermissionManager permissionManager;
@@ -15,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
 
         permissionManager = new PermissionManager(this);
 
@@ -36,11 +38,18 @@ public class MainActivity extends AppCompatActivity {
         if(hasAudioPermissions){
             playMusic();
         }
-
-        Log.d("MainActivity", "Request result made");
     }
 
     private void playMusic() {
+        SongManager songManager = new SongManager(this);
+        List<Song> songs = songManager.fetchSongsFromStorage();
+
+        Log.d("MainActivity", songs.toString());
+
+        for(Song s : songs){
+            s.printData();
+        }
+
         try {
             String musicPath = "/storage/emulated/0/Music/APMMusic/StrangeTropics/song.mp3";
             mediaPlayer = new MediaPlayer();
