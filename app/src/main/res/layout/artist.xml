@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/topLevel"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/material_dynamic_neutral0"
+    android:padding="0px">
+
+    <!-- Bottom Navigation -->
+
+    <!-- Title TextView -->
+
+    <LinearLayout
+        android:id="@+id/musicPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#292828"
+        android:clipToPadding="true"
+        android:dividerPadding="0px"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="0px"
+        android:paddingHorizontal="0px"
+        android:paddingVertical="0px"
+        android:paddingStart="0px"
+        android:paddingLeft="0px"
+        android:paddingTop="0px"
+        android:paddingEnd="0px"
+        android:paddingRight="0px"
+        android:paddingBottom="0px"
+        app:layout_constraintBottom_toTopOf="@+id/navBar"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_gravity="top"
+                android:background="#474545">
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/albumImage"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/homeicon" />
+
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/SongName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="SongName"
+                        android:textColor="#F4F0F0"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/SongArtist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="SongArist"
+                        android:textColor="#979797"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/shuffleMusicBar"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:contentDescription="back"
+                            android:scaleX="2"
+                            android:scaleY="2"
+                            app:srcCompat="@drawable/ic_previous"
+                            app:tint="#FFFFFF" />
+
+                        <ImageButton
+                            android:id="@+id/pause"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:contentDescription="play"
+                            android:scaleX="2"
+                            android:scaleY="2"
+                            app:srcCompat="@drawable/ic_play_pause"
+                            app:tint="#FFFFFF" />
+
+                        <ImageButton
+                            android:id="@+id/playMusicBar"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:autofillHints="next"
+                            android:background="@null"
+                            android:contentDescription="next"
+                            android:rotation="180"
+                            android:scaleX="2"
+                            android:scaleY="2"
+                            app:srcCompat="@drawable/ic_previous"
+                            app:tint="#FFFFFF" />
+                    </LinearLayout>
+
+                </FrameLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#1E1D1D"
+        android:clipToPadding="true"
+        android:dividerPadding="0px"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="0px"
+        android:paddingHorizontal="0px"
+        android:paddingVertical="0px"
+        android:paddingStart="0px"
+        android:paddingLeft="0px"
+        android:paddingTop="0px"
+        android:paddingEnd="0px"
+        android:paddingRight="0px"
+        android:paddingBottom="0px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/homeImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/homeicon" />
+
+            <TextView
+                android:id="@+id/homeText"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Home"
+                android:textColor="#E6DEDE"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="2dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/glass"
+                app:tint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Search"
+                android:textColor="#E6DEDE"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/artistFrames"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBar">
+
+        <!-- Radiohead Item -->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/artistFrame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            app:cardBackgroundColor="#222121"
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
+                android:id="@+id/ArtistList"
+                android:layout_width="match_parent"
+                android:layout_height="71dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/albumImageList"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/homeicon" />
+
+                <TextView
+                    android:id="@+id/artistNameList"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="AristName"
+                    android:textColor="#CBCDD1"
+                    android:textSize="34sp" />
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/playArtist"-->
+<!--                    android:layout_width="10dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@null"-->
+<!--                    android:contentDescription="playArtist"-->
+<!--                    android:scaleX="2"-->
+<!--                    android:scaleY="2"-->
+<!--                    app:srcCompat="@drawable/ic_play_pause"-->
+<!--                    app:tint="#FFFFFF" />-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/shuffle"-->
+<!--                    android:layout_width="10dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@null"-->
+<!--                    android:contentDescription="shuffleArtist"-->
+<!--                    app:srcCompat="@drawable/shuffle" />-->
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Bjork Item -->
+
+        <!-- The Smiths Item -->
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/gradient" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:gravity="center"
+            android:text="Artists"
+            android:textColor="#FFFFFF"
+            android:textSize="60sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
