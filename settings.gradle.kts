@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Music Player"
+rootProject.name = "tapify"
 include(":app")

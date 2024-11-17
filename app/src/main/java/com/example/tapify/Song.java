@@ -1,4 +1,4 @@
-package com.example.musicplayer;
+package com.example.tapify;
 
 import android.os.Parcel;
 import android.os.Parcelable;

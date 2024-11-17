@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.musicplayer"
+    namespace = "com.example.tapify"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.musicplayer"
+        applicationId = "com.example.tapify"
         minSdk = 28
         targetSdk = 34
         versionCode = 1

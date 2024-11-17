@@ -1,4 +1,4 @@
-package com.example.musicplayer;
+package com.example.tapify;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.provider.Settings;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -18,8 +19,9 @@ public class PermissionManager {
 
     private static final int REQUEST_MEDIA_AUDIO = 1;
     private final AppCompatActivity activity;
-    private ActivityResultLauncher<Intent> settingsLauncher;
+    private final ActivityResultLauncher<Intent> settingsLauncher;
 
+    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     public PermissionManager(AppCompatActivity activity) {
         this.activity = activity;
 

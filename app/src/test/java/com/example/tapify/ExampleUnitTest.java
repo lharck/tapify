@@ -1,4 +1,4 @@
-package com.example.musicplayer;
+package com.example.tapify;
 
 import org.junit.Test;
 
