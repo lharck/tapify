@@ -38,6 +38,7 @@ public class PermissionManager {
         );
     }
 
+
     public boolean isPermissionAccepted(String permission) {
         int permissionLevel = ContextCompat.checkSelfPermission(activity, permission);
         boolean permissionDenied = permissionLevel != PackageManager.PERMISSION_GRANTED;

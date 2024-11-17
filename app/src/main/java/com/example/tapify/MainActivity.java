@@ -29,13 +29,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         permissionManager = new PermissionManager(this);
-
         boolean hasAudioPermissions = permissionManager.isPermissionAccepted(Manifest.permission.READ_MEDIA_AUDIO);
-
-        if(hasAudioPermissions){
-            playMusic();
-        } else {
-            Log.d("MainActivity", "Does not have music permission upon opening the app");
+        if(!hasAudioPermissions){
         }
 
         loadWebPage();
@@ -59,12 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-//                        Toast.makeText(getApplicationContext(), " Data Saved Locally", Toast.LENGTH_SHORT).show();
-                        boolean hasAudioPermissions = permissionManager.isPermissionAccepted(Manifest.permission.READ_MEDIA_AUDIO);
-
-                        if(hasAudioPermissions){
-                            playMusic();
-                        }
+                        playMusic();
                     }
                 })
         ;
@@ -79,6 +69,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void playMusic() {
+        boolean hasAudioPermissions = permissionManager.isPermissionAccepted(Manifest.permission.READ_MEDIA_AUDIO);
+        if(!hasAudioPermissions){
+            Log.d("MainActivity", "No audio permissions - playMusic()");
+            return;
+        }
+
         SongManager songManager = new SongManager(this);
         List<Song> songs = songManager.fetchSongsFromStorage();
 
