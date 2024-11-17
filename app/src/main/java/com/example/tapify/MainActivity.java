@@ -48,17 +48,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @JavascriptInterface
-    public void playMusic(String testString) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Confirmation").setMessage("Here's the test string:\t" + testString)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        playMusic();
-                    }
-                })
-        ;
-        builder.create().show();
+    public String playMusic(String testString) {
+        playMusic();
+
+        return testString + "and this was sent from Java.";
     }
 
     @Override
@@ -78,11 +71,11 @@ public class MainActivity extends AppCompatActivity {
         SongManager songManager = new SongManager(this);
         List<Song> songs = songManager.fetchSongsFromStorage();
 
-        Log.d("MainActivity", songs.toString());
-
-        for(Song s : songs){
-            s.printData();
-        }
+//        Log.d("MainActivity", songs.toString());
+//
+//        for(Song s : songs){
+//            s.printData();
+//        }
 
         try {
             MediaPlayer mediaPlayer = new MediaPlayer();

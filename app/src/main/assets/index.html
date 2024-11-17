@@ -4,8 +4,10 @@
 </body>
 <script>
     function musicFnJavaScript(){
-        // Dialog is javascript interface name mentioned in Mainactivity.Java
-        Dialog.playMusic("You now clicked on the ");
+        var result = Dialog.playMusic("This was sent from JavaScript\n");
+        var h1 = document.createElement("h1");
+        h1.textContent = result;
+        document.body.appendChild(h1);
     }
 </script>
 </html>
