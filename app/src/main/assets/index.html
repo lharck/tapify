@@ -1,13 +1,40 @@
+<!DOCTYPE html>
 <html>
-<body bgcolor="red">
-<button onclick="musicFnJavaScript();">Play Music</button>
+<head>
+    <link rel="stylesheet" href="PageDefault.css">
+    <link rel="stylesheet" href="HomePage.css">
+</head>
+
+<body>
+<div >
+    <p class="pageTitle">Home</p>
+</div>
+
+<div class="container">
+    <div class="search-div">
+        <input type="text" class="search-box" id="search" placeholder="What would you like to search?" name="search">
+    </div>
+
+    <div class="grid-container">
+        <button class="homeButton" onclick="musicFnJavaScript();">Playlists</button>
+        <button class="homeButton" onclick="musicFnJavaScript();">Albums</button>
+        <button class="homeButton" onclick="musicFnJavaScript();">Artists</button>
+        <button class="homeButton" onclick="musicFnJavaScript();">Genres</button>
+        <button class="homeButton" onclick="window.location.href='RecentlyPlayed.html';">Recently Played</button>
+        <button class="homeButton" onclick="musicFnJavaScript();">Most Played</button>
+    </div>
+</div>
+
+<div class="bottomBar">
+    <div class="progressBarBG">
+        <div class="progressBar">
+
+        </div>
+    </div>
+    <img src="images/inrainbows.jpg" class="songPreview">
+
+</div>
+
 </body>
-<script>
-    function musicFnJavaScript(){
-        var result = Dialog.playMusic("This was sent from JavaScript\n");
-        var h1 = document.createElement("h1");
-        h1.textContent = result;
-        document.body.appendChild(h1);
-    }
-</script>
+<script src="index.js"></script>
 </html>

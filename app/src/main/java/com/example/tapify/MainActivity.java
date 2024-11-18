@@ -8,6 +8,7 @@ import android.os.Build;
 import android.util.Log;
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -36,22 +37,25 @@ public class MainActivity extends AppCompatActivity {
         loadWebPage();
     }
 
-
     @SuppressLint("SetJavaScriptEnabled")
     void loadWebPage() {
         WebView webView = findViewById(R.id.webView);
-        webView.loadUrl("file:///android_asset/index.html");
 
+        webView.getSettings().setLoadsImagesAutomatically(true);
+        webView.getSettings().setAllowFileAccess(true);
+        webView.getSettings().setAllowContentAccess(true);
+        webView.clearCache(true);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setSupportZoom(true);
         webView.addJavascriptInterface(this, "Dialog");
+        webView.loadUrl("file:///android_asset/index.html");
     }
 
     @JavascriptInterface
     public String playMusic(String testString) {
         playMusic();
 
-        return testString + "and this was sent from Java.";
+        return testString + "and t" +
+                "his was sent from Java.";
     }
 
     @Override
