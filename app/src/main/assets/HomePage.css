@@ -1,18 +1,22 @@
 .container {
     width: 100vw;
-    height: 80vh;
+    height: 500px;
+    margin-top: 100px;
+    margin-bottom: 70px;
     display: flex;
     flex-direction: column;
 }
 
+/* styling for home buttons */
 .grid-container {
     flex-grow: 1;
     display: grid;
-    grid-template-columns: 40% 40%;
+    grid-template-columns: 175px 175px;
     grid-gap: 20px;
     justify-content: center;
     justify-items: center;
     align-items: center;
+    margin-top: 10px;
 }
 
 .homeButton {
@@ -28,16 +32,16 @@
     box-shadow: 0 8px 16px rgba(100, 100,100, 0.3);
 }
 
+/* styling for search */
 .search-div {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 10%;
-    padding: 10px;
 }
 
 .search-box {
-    height: 60%;
+    height: 30px;
     width: 80%;
     font-size: 16px;
     border-radius: 20px;

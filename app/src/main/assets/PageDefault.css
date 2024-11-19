@@ -4,20 +4,21 @@ body {
     background-color: #000000;
 }
 
+/* Styling for the title at the top of each screen */
 .pageTitle{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px;
+    margin: 0;
     color: white;
     font-weight: bold;
-    padding: 10px;
-    margin: 0;
     font-size: 30px;
     background: linear-gradient(45deg,#701d6d, #40E0D0, #701d6d);
 }
 
-.songPreview {
-    height: 10vh;
-    padding: 10px;
-}
-
+/* Styling for the progress bar at the bottom of each screen */
 .bottomBar {
     position: fixed;
     bottom: 0;
@@ -26,18 +27,62 @@ body {
     background-color: #292828;
     color: white;
     padding: 0px;
+    height: 100px;
 }
 
 .progressBarBG {
     width: 100%;
-    height: 1vh;
+    height: 5px;
     background-color: #474545;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
-/* The actual progress bar */
 .progressBar {
     width: 50%;
     height: 100%;
     background-color: #8f06ee;
+}
+
+.songPreview {
+    height: 80%;
+    padding: 5px;
+}
+
+.songInfoBar{
+    height: 50%;
+}
+
+.navBar {
+    background-color: #1e1d1d;
+    height: 50%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.navButton {
+    background-color: #1e1d1d;
+    height: 50%;
+}
+
+.invisibleButton {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    height: 100%;
+    border: none;
+    padding: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+    background: none;
+}
+
+.invisibleButton img {
+
+}
+
+.navImage {
+    margin-left: 5px;
+    height: 50%;
 }

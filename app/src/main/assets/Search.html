@@ -2,25 +2,27 @@
 <html>
 <head>
     <link rel="stylesheet" href="PageDefault.css">
+    <link rel="stylesheet" href="lists.css">
     <link rel="stylesheet" href="HomePage.css">
 </head>
 
 <body>
-<p class="pageTitle">Home</p>
+<p class="pageTitle">Search</p>
 
 <div class="container">
     <div class="search-div">
         <input type="text" class="search-box" id="search" placeholder="What would you like to search?" name="search">
     </div>
 
-    <div class="grid-container">
-        <button class="homeButton" onclick="window.location.href='Playlists.html';">Playlists</button>
-        <button class="homeButton" onclick="window.location.href='Albums.html';">Albums</button>
-        <button class="homeButton" onclick="window.location.href='Artists.html';">Artists</button>
-        <button class="homeButton" onclick="window.location.href='Genres.html';">Genres</button>
-        <button class="homeButton" onclick="window.location.href='RecentlyPlayed.html';">Recently Played</button>
-        <button class="homeButton" onclick="window.location.href='MostPlayed.html';">Most Played</button>
-    </div>
+    <ul class="buttonList">
+        <li class="listItem">
+            <img class="image" src="https://via.placeholder.com/50">
+            <p class="title fullTitle">Title</p>
+            <button class="invisibleButton">
+                <img class="image" src="https://via.placeholder.com/50">
+            </button>
+        </li>
+    </ul>
 </div>
 
 <div class="bottomBar">
@@ -44,6 +46,7 @@
         </button>
     </div>
 </div>
+
 
 </body>
 <script src="index.js"></script>
