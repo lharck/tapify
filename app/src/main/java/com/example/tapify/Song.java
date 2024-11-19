@@ -62,9 +62,10 @@ public class Song implements Parcelable {
         return 0;
     }
 
-    public void printData(){
-        String path = "\nTitle:" + this.title + "\nArtist:"  + this.artist + "\nPath:" + this.path;
-        Log.d("MainAction", path);
+    public String getData(){
+        String data = "\nTitle:" + this.title + "\nArtist:"  + this.artist + "\nPath:" + this.path;
+//        Log.d("MainAction", path);
+        return data;
     }
 
     @Override

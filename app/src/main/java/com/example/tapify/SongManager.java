@@ -2,18 +2,30 @@ package com.example.tapify;
 
 import android.database.Cursor;
 import android.provider.MediaStore;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SongManager {
-
     private final AppCompatActivity activity;
 
     SongManager(AppCompatActivity activity){
         this.activity = activity;
+    }
+
+    @NonNull
+    public String toString(){
+        List<Song> songs = fetchSongsFromStorage();
+        StringBuilder songsString = new StringBuilder();
+
+        for(Song s : songs){
+            songsString.append(s.getData()).append("\n---");
+        }
+        return songsString.toString();
     }
 
     public List<Song> fetchSongsFromStorage() {

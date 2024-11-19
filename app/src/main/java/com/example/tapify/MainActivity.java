@@ -18,10 +18,12 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private PermissionManager permissionManager;
+    SongManager songManager;
 
     @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     @Override
@@ -31,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         permissionManager = new PermissionManager(this);
         boolean hasAudioPermissions = permissionManager.isPermissionAccepted(Manifest.permission.READ_MEDIA_AUDIO);
-        if(!hasAudioPermissions){
-        }
+        songManager = new SongManager(this);
 
         loadWebPage();
     }
@@ -46,16 +47,14 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setAllowContentAccess(true);
         webView.clearCache(true);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.addJavascriptInterface(this, "Dialog");
+        webView.addJavascriptInterface(this, "androidInterface");
         webView.loadUrl("file:///android_asset/index.html");
     }
 
     @JavascriptInterface
-    public String playMusic(String testString) {
+    public String getSongData() {
         playMusic();
-
-        return testString + "and t" +
-                "his was sent from Java.";
+        return songManager.toString();
     }
 
     @Override
@@ -66,20 +65,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void playMusic() {
+        List<Song> songs = songManager.fetchSongsFromStorage();
         boolean hasAudioPermissions = permissionManager.isPermissionAccepted(Manifest.permission.READ_MEDIA_AUDIO);
         if(!hasAudioPermissions){
             Log.d("MainActivity", "No audio permissions - playMusic()");
             return;
         }
-
-        SongManager songManager = new SongManager(this);
-        List<Song> songs = songManager.fetchSongsFromStorage();
-
-//        Log.d("MainActivity", songs.toString());
-//
-//        for(Song s : songs){
-//            s.printData();
-//        }
 
         try {
             MediaPlayer mediaPlayer = new MediaPlayer();
