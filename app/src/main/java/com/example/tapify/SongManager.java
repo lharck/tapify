@@ -1,10 +1,12 @@
 package com.example.tapify;
 
 import android.database.Cursor;
+import android.os.Build;
 import android.provider.MediaStore;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -30,12 +32,15 @@ public class SongManager {
 
     public List<Song> fetchSongsFromStorage() {
         List<Song> songs = new ArrayList<>();
-
         String[] projection = {
                 MediaStore.Audio.Media._ID,
                 MediaStore.Audio.Media.TITLE,
                 MediaStore.Audio.Media.ARTIST,
-                MediaStore.Audio.Media.DATA
+                MediaStore.Audio.Media.ALBUM,
+                MediaStore.Audio.Media.DURATION,
+                MediaStore.Audio.Media.DATA,
+                MediaStore.Audio.Media.GENRE,
+                MediaStore.Audio.Media.ALBUM_ID
         };
 
         String selection = MediaStore.Audio.Media.IS_MUSIC + " != 0";
@@ -54,9 +59,14 @@ public class SongManager {
                 long id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media._ID));
                 String title = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE));
                 String artist = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST));
+                String album = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM));
+                long duration = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION));
                 String data = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA));
+                String genre = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.GENRE));
+                long albumId = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM_ID));
+                Log.d("MainAction", title + "\nartist: " + artist + "\nalbum: " +  album + "\ngenre: " +  genre + "\nduration: " +  duration + "\ndata:" +  data + "\nalbum id:" +  albumId);
 
-                songs.add(new Song(title, artist, data));
+                songs.add(new Song(title, artist, album, genre, duration, data, albumId));
             }
             cursor.close();
         }

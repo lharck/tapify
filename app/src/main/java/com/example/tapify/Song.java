@@ -4,74 +4,38 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
-public class Song implements Parcelable {
-    private String title;
-    private String artist;
-    private String path;
+public class Song {
+    public String title;
+    public String artist;
+    public String album;
+    public String genre;
+    public long duration;
+    public String data;
+    public long albumId;
+    public String path;
 
-    public Song(String title, String artist, String path) {
+    public Song(String title, String artist, String album, String genre, long duration, String data, long albumId) {
         this.title = title;
         this.artist = artist;
+        this.album = album;
+        this.genre = genre;
+        this.duration = duration;
+        this.data = data;
+        this.albumId = albumId;
         this.path = path;
-    }
-
-    protected Song(Parcel in) {
-        title = in.readString();
-        artist = in.readString();
-        path = in.readString();
-    }
-
-    public static final Creator<Song> CREATOR = new Creator<Song>() {
-        @Override
-        public Song createFromParcel(Parcel in) {
-            return new Song(in);
-        }
-
-        @Override
-        public Song[] newArray(int size) {
-            return new Song[size];
-        }
-    };
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getArtist() {
-        return artist;
-    }
-
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
     }
 
     public String getData(){
-        String data = "\nTitle:" + this.title + "\nArtist:"  + this.artist + "\nPath:" + this.path;
-//        Log.d("MainAction", path);
-        return data;
-    }
+        String data = "\nTitle:"
+                + this.title
+                + "\nArtist:"  + this.artist
+                + "\nPath:" + this.path
+                + "\nAlbum:" + this.album
+                + "\nGenre:" + this.genre
+                + "\nData:" + this.data
+                + "\nAlbumId:" + this.albumId
+                + "\nPath:" + this.path;
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(title);
-        dest.writeString(artist);
-        dest.writeString(path);
+        return data;
     }
 }

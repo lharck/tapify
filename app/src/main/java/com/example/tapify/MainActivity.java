@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     @JavascriptInterface
     public String getSongData() {
-        playMusic();
+//        playMusic();
         return songManager.toString();
     }
 
@@ -65,7 +65,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void playMusic() {
-        List<Song> songs = songManager.fetchSongsFromStorage();
+        List<Song> songs = null;
+        songs = songManager.fetchSongsFromStorage();
+
         boolean hasAudioPermissions = permissionManager.isPermissionAccepted(Manifest.permission.READ_MEDIA_AUDIO);
         if(!hasAudioPermissions){
             Log.d("MainActivity", "No audio permissions - playMusic()");
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             MediaPlayer mediaPlayer = new MediaPlayer();
-            mediaPlayer.setDataSource(songs.get(0).getPath());
+            mediaPlayer.setDataSource(songs.get(0).path);
             mediaPlayer.prepare();
             mediaPlayer.start();
             Toast.makeText(this, "Playing Music", Toast.LENGTH_SHORT).show();
