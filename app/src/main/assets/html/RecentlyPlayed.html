@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="PageDefault.css">
-    <link rel="stylesheet" href="lists.css">
+    <link rel="stylesheet" href="../css/PageDefault.css">
+    <link rel="stylesheet" href="../css/lists.css">
 </head>
 
 <body>
-<p class="pageTitle">Albums</p>
+<p class="pageTitle">Recently Played</p>
 
 <ul class="buttonList">
     <li class="listItem">
@@ -15,29 +15,33 @@
         <button class="invisibleButton">
             <img class="image" src="https://via.placeholder.com/50">
         </button>
+        <button class="invisibleButton">
+            <img class="image" src="https://via.placeholder.com/50">
+        </button>
     </li>
 </ul>
+
 
 <div class="bottomBar">
     <div class = songInfoBar>
         <div class="progressBarBG">
-            <div class="progressBar"></div>
+            <div class="progressBar">
+
+            </div>
         </div>
         <img src="https://via.placeholder.com/50" class="songPreview">
     </div>
 
     <div class="navBar">
-        <button class="invisibleButton" onclick="window.location.href='index.html'">
+        <button class="invisibleButton" onclick="window.location.href='../index.html'">
             <img class="navImage" src="https://via.placeholder.com/50">
             home
         </button>
-        <button class="invisibleButton" onclick="window.location.href='Search.html'">
+        <button class="invisibleButton" onclick="window.location.href='../html/Search.html'">
             <img class="navImage" src="https://via.placeholder.com/50">
             search
         </button>
     </div>
 </div>
-<script src="singleAlbum.js"></script>
-
 </body>
 </html>

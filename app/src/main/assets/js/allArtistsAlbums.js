@@ -16,7 +16,7 @@ function addListItem(album){
 
     const newImage = document.createElement('img');
     newImage.classList.add('image');
-    newImage.src = 'images/inRainbows.jpg';
+    newImage.src = '../images/inRainbows.jpg';
     newListItem.appendChild(newImage);
 
     const newTitle = document.createElement('p');
@@ -26,7 +26,7 @@ function addListItem(album){
 
     const shuffleImg = document.createElement('img');
     shuffleImg.classList.add('image');
-    shuffleImg.src = 'images/shuffle.png';
+    shuffleImg.src = '../images/shuffle.png';
     newListItem.appendChild(shuffleImg);
 
     shuffleImg.addEventListener('click', function() {
@@ -35,7 +35,7 @@ function addListItem(album){
 
     const playImg = document.createElement('img');
     playImg.classList.add('image');
-    playImg.src = 'images/play.png';
+    playImg.src = '../images/play.png';
     newListItem.appendChild(playImg);
 
     playImg.addEventListener('click', function() {
@@ -44,7 +44,7 @@ function addListItem(album){
 
     newTitle.addEventListener('click', function(){
         console.log("Clicked title");
-        window.location.href='singleAlbum.html';
+        window.location.href='../html/singleAlbum.html';
         sessionStorage.setItem("pageTitle", newTitle.textContent);
     })
 

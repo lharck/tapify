@@ -1,14 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const albumName = sessionStorage.getItem("pageTitle");
+    const artistName = sessionStorage.getItem("currentArtist");
     const pageTitle = document.querySelector('.pageTitle');
-    pageTitle.textContent = albumName;
+    pageTitle.textContent = artistName;
 
-   const songs = getSongsOnAlbum(albumName);
-   songs.forEach(song => {addListItem(song);})
+   const songs = getSongsBy(artistName);
+   songs.forEach(song => {
+        addListItem(song);
+    })
 });
 
-function getSongsOnAlbum(albumName){
-    const songsString = androidInterface.getSongsOnAlbum(albumName);
+function getSongsBy(artistName){
+    const songsString = androidInterface.getSongsBy(artistName);
     const entries = songsString.split('---').map(entry => entry.trim()).filter(entry => entry.length > 0);
 
     const musicData = entries.map(entry => {
@@ -36,7 +38,7 @@ function addListItem(song){
 
     const newImage = document.createElement('img');
     newImage.classList.add('image');
-    newImage.src = 'images/inRainbows.jpg';
+    newImage.src = '../images/inRainbows.jpg';
     newListItem.appendChild(newImage);
 
     const newTitle = document.createElement('p');
@@ -46,12 +48,11 @@ function addListItem(song){
 
     const playImg = document.createElement('img');
     playImg.classList.add('image');
-    playImg.src = 'images/play.png';
+    playImg.src = '../images/play.png';
     newListItem.appendChild(playImg);
 
     newListItem.addEventListener('click', function() {
-        const songTitle = newListItem.querySelector('.title').textContent;
-        androidInterface.playSongTitled(songTitle);
+        console.log('start playing song');
     });
 
     buttonList.appendChild(newListItem);
