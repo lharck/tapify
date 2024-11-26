@@ -53,21 +53,37 @@ public class MainActivity extends AppCompatActivity {
 
     @JavascriptInterface
     public String getSongData() {
-//        playMusic();
-        return songManager.toString();
+        return songManager.getAllSongs();
     }
+
+    @JavascriptInterface
+    public String getArtists() {
+        return songManager.getArtists();
+    }
+    @JavascriptInterface
+    public String getAllGenres() {
+        return songManager.getAllGenres();
+    }
+
+    @JavascriptInterface
+    public String getAllAlbums() {
+        return songManager.getAllAlbums();
+    }
+
+
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         Log.d("MainActivity", "Started request permission result");
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         permissionManager.handlePermissionResult(requestCode, permissions, grantResults);
+        songManager.fetchSongsFromStorage();
+        Song songToPlay = songManager.songs.get(0);
     }
 
-    private void playMusic() {
-        List<Song> songs = null;
-        songs = songManager.fetchSongsFromStorage();
-
+    private void playMusic(Song songToPlay) {
         boolean hasAudioPermissions = permissionManager.isPermissionAccepted(Manifest.permission.READ_MEDIA_AUDIO);
         if(!hasAudioPermissions){
             Log.d("MainActivity", "No audio permissions - playMusic()");
@@ -76,12 +92,14 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             MediaPlayer mediaPlayer = new MediaPlayer();
-            mediaPlayer.setDataSource(songs.get(0).path);
+            mediaPlayer.setDataSource(songToPlay.path);
             mediaPlayer.prepare();
             mediaPlayer.start();
             Toast.makeText(this, "Playing Music", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             Toast.makeText(this, "Failed to play music", Toast.LENGTH_SHORT).show();
         }
+
+        songManager.playedSongs.add(songToPlay);
     }
 }

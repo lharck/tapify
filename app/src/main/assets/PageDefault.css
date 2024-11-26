@@ -18,6 +18,22 @@ body {
     background: linear-gradient(45deg,#701d6d, #40E0D0, #701d6d);
 }
 
+.topBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f8f8f8;
+}
+
+/*
+.navImage {
+    width: 40px;
+    height: auto;
+}
+
+*/
+
 /* Styling for the progress bar at the bottom of each screen */
 .bottomBar {
     position: fixed;
@@ -82,3 +98,6 @@ body {
     margin-left: 5px;
     height: 50%;
 }
+
+
+
