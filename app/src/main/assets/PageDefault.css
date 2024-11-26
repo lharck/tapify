@@ -2,37 +2,46 @@ body {
     margin: 0;
     padding: 0;
     background-color: #000000;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Styling for the title at the top of each screen */
-.pageTitle{
+.pageTitle {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 25px;
+    padding: 15px 20px;
     margin: 0;
     color: white;
-    font-weight: bold;
-    font-size: 30px;
-    background: linear-gradient(45deg,#701d6d, #40E0D0, #701d6d);
+    font-weight: 600;
+    font-size: 28px;
+    background: linear-gradient(90deg, #8f06ee, #530d81);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
+/* Styling for the top bar container */
 .topBar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
-    background-color: #f8f8f8;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #2a003d, #1e1e1e);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    height: 60px;
 }
 
-/*
-.navImage {
-    width: 40px;
-    height: auto;
+/* Add optional hover effects for interactivity */
+.pageTitle:hover {
+    color: #e0e0e0;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
+    transition: color 0.3s, text-shadow 0.3s;
 }
-
-*/
 
 /* Styling for the progress bar at the bottom of each screen */
 .bottomBar {
@@ -42,7 +51,6 @@ body {
     width: 100%;
     background-color: #292828;
     color: white;
-    padding: 0px;
     height: 100px;
 }
 
@@ -63,14 +71,13 @@ body {
     padding: 5px;
 }
 
-.songInfoBar{
+.songInfoBar {
     height: 50%;
 }
 
 .navBar {
     background-color: #1e1d1d;
     height: 50%;
-
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -99,5 +106,86 @@ body {
     height: 50%;
 }
 
+/* Footer container */
+.bottomBar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #2a003d, #000000);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    height: auto; /* Allow height to adjust dynamically */
+}
 
+/* Song info section */
+.songInfoBar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 5px 10px;
+    gap: 10px; /* Spacing between image and progress bar */
+}
 
+/* Song preview image */
+.songPreview {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+/* Progress bar container */
+.progressBarBG {
+    flex-grow: 1;
+    height: 6px; /* Slightly larger for better visibility */
+    background-color: #474545;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progressBar {
+    width: 50%; /* Example progress */
+    height: 100%;
+    background-color: #8f06ee;
+    border-radius: 3px 0 0 3px;
+}
+
+/* Navbar within footer */
+.navBar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px; /* Spacing between navbar and song info */
+    gap: 30px;
+}
+
+/* Navigation buttons */
+.navButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: none;
+    border: none;
+    font-size: 14px; /* Slightly larger text for readability */
+    cursor: pointer;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.navButton:hover {
+    color: #8f06ee;
+    transform: scale(1.1);
+}
+
+.navImage {
+    width: 24px; /* Slightly larger icons for better visibility */
+    height: 24px;
+    margin-bottom: 4px; /* Add spacing between icon and label */
+}

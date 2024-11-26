@@ -8,37 +8,35 @@
 <body>
 <p class="pageTitle">Albums</p>
 
-<ul class="buttonList">
-    <li class="listItem">
-        <img class="image" src="https://via.placeholder.com/50">
-        <p class="title fullTitle">Title</p>
-        <button class="invisibleButton">
-            <img class="image" src="https://via.placeholder.com/50">
-        </button>
-    </li>
-</ul>
+<!--<ul class="buttonList">-->
+<!--    <li class="listItem">-->
+<!--        <img class="image" src="https://via.placeholder.com/50">-->
+<!--        <p class="title fullTitle">Title</p>-->
+<!--        <button class="invisibleButton">-->
+<!--            <img class="image" src="https://via.placeholder.com/50">-->
+<!--        </button>-->
+<!--    </li>-->
+<!--</ul>-->
 
-
-<div class="bottomBar">
-    <div class = songInfoBar>
+<footer class="bottomBar">
+    <div class="songInfoBar">
+        <img src="https://via.placeholder.com/50" class="songPreview" alt="Now Playing">
         <div class="progressBarBG">
-            <div class="progressBar">
-
-            </div>
+            <div class="progressBar"></div>
         </div>
-        <img src="https://via.placeholder.com/50" class="songPreview">
     </div>
 
-    <div class="navBar">
-        <button class="invisibleButton" onclick="window.location.href='index.html'">
-            <img class="navImage" src="https://via.placeholder.com/50">
-            home
+    <nav class="navBar">
+        <button class="navButton" onclick="window.location.href='index.html';">
+            <img class="navImage" src="https://via.placeholder.com/50" alt="Home Icon">
+            <span>Home</span>
         </button>
-        <button class="invisibleButton" onclick="window.location.href='Search.html'">
-            <img class="navImage" src="https://via.placeholder.com/50">
-            search
+        <button class="navButton" onclick="window.location.href='Search.html';">
+            <img class="navImage" src="https://via.placeholder.com/50" alt="Search Icon">
+            <span>Search</span>
         </button>
-    </div>
-</div>
+    </nav>
+</footer>
+
 </body>
 </html>
