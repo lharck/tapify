@@ -71,9 +71,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         Log.d("MainActivity", "Started request permission result");

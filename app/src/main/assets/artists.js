@@ -52,22 +52,25 @@ function addListItem(artist){//
     newTitle.textContent = artist;
     newListItem.appendChild(newTitle);
 
-    const newButton = document.createElement('button');
-    newButton.classList.add('invisibleButton');
+    const shuffleImg = document.createElement('img');
+    shuffleImg.classList.add('image');
+    shuffleImg.src = 'images/shuffle.png';
+    newListItem.appendChild(shuffleImg);
 
-    const newButtonImage = document.createElement('img');
-    newButtonImage.classList.add('image');
-    newButtonImage.src = 'images/inRainbows.jpg';
-    newButton.appendChild(newButtonImage);
-
-    newButton.addEventListener('click', function() {
-        // Your desired action when the button is clicked
+    shuffleImg.addEventListener('click', function() {
         console.log('Shuffle button clicked!');
-        // For example, if you want to shuffle songs or trigger any action, you can add that here
-        // e.g., shuffleSongs(); or any other functionality you want
     });
 
-    newListItem.appendChild(newButton);
+
+    const playImg = document.createElement('img');
+    playImg.classList.add('image');
+    playImg.src = 'images/play.png';
+    newListItem.appendChild(playImg);
+
+    playImg.addEventListener('click', function() {
+        console.log('play button clicked!');
+    });
+
     buttonList.appendChild(newListItem);
 }
 
