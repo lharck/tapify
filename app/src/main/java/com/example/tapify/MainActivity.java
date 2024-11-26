@@ -18,23 +18,24 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private PermissionManager permissionManager;
     SongManager songManager;
+    MediaPlayer mediaPlayer;
 
     @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         permissionManager = new PermissionManager(this);
         boolean hasAudioPermissions = permissionManager.isPermissionAccepted(Manifest.permission.READ_MEDIA_AUDIO);
         songManager = new SongManager(this);
-
+        mediaPlayer = new MediaPlayer();
         loadWebPage();
     }
 
@@ -52,22 +53,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @JavascriptInterface
-    public String getSongData() {
-        return songManager.getAllSongs();
-    }
+    public String getSongData() {return songManager.getAllSongs();}
 
     @JavascriptInterface
-    public String getArtists() {
-        return songManager.getArtists();
-    }
+    public String getArtists() {return songManager.getArtists();}
     @JavascriptInterface
-    public String getAllGenres() {
-        return songManager.getAllGenres();
-    }
+    public String getGenres() {return songManager.getAllGenres();}
 
     @JavascriptInterface
-    public String getAllAlbums() {
-        return songManager.getAllAlbums();
+    public String getAlbums() {return songManager.getAllAlbums();}
+
+    @JavascriptInterface
+    public String getSongsBy(String artistName) {return songManager.getSongsBy(artistName);}
+
+    @JavascriptInterface
+    public String getSongsOnAlbum(String albumName) {return songManager.getSongsOnAlbum(albumName);}
+
+    @JavascriptInterface
+    public void playSongTitled(String songName) {playMusic(songManager.getSong(songName));}
+
+    @JavascriptInterface
+    public String getMostPlayedSongs() {
+        return songManager.getMostPlayedSongs();
     }
 
 
@@ -82,21 +89,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void playMusic(Song songToPlay) {
         boolean hasAudioPermissions = permissionManager.isPermissionAccepted(Manifest.permission.READ_MEDIA_AUDIO);
-        if(!hasAudioPermissions){
+        if (!hasAudioPermissions) {
             Log.d("MainActivity", "No audio permissions - playMusic()");
             return;
         }
 
         try {
-            MediaPlayer mediaPlayer = new MediaPlayer();
-            mediaPlayer.setDataSource(songToPlay.path);
+            if (mediaPlayer.isPlaying()) {mediaPlayer.stop();}
+            mediaPlayer.reset();
+            mediaPlayer.setDataSource(songToPlay.data);
             mediaPlayer.prepare();
             mediaPlayer.start();
-            Toast.makeText(this, "Playing Music", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Toast.makeText(this, "Failed to play music", Toast.LENGTH_SHORT).show();
-        }
+            songManager.playedSongs.add(songToPlay);
 
-        songManager.playedSongs.add(songToPlay);
+            Log.d("testing", songManager.getMostPlayedSongs());
+        } catch (IOException e) {
+            Toast.makeText(this, "Failed to play music: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
+
 }

@@ -1,24 +1,15 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-//    const musicData = getMusicData();
-//
-//    musicData.forEach((song, index) => {
-//       addListItem(song.Artist);
-//    });
-    const artistsString = androidInterface.getArtists();
+    const albumsString = androidInterface.getAlbums();
+    const albums = albumsString.split(",");
 
-    if(artistsString.length == 0){return;}
-
-    const artists = artistsString.split(",");
-
-    console.log("************artists: ", artists);
-    artists.forEach(artist => {
-        addListItem(artist);
+    albums.forEach(album => {
+        addListItem(album);
     })
 });
 
-function addListItem(artist){
+function addListItem(album){
     const buttonList = document.querySelector('.buttonList');
     const newListItem = document.createElement('li');
     newListItem.classList.add('listItem');
@@ -30,7 +21,7 @@ function addListItem(artist){
 
     const newTitle = document.createElement('p');
     newTitle.classList.add('title', 'fullTitle');
-    newTitle.textContent = artist;
+    newTitle.textContent = album;
     newListItem.appendChild(newTitle);
 
     const shuffleImg = document.createElement('img');
@@ -53,8 +44,8 @@ function addListItem(artist){
 
     newTitle.addEventListener('click', function(){
         console.log("Clicked title");
-        window.location.href='ArtistPage.html';
-        sessionStorage.setItem("currentArtist", newTitle.textContent);
+        window.location.href='singleAlbum.html';
+        sessionStorage.setItem("pageTitle", newTitle.textContent);
     })
 
     buttonList.appendChild(newListItem);

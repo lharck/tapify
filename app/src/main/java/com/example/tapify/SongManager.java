@@ -15,9 +15,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class SongManager {
     private final AppCompatActivity activity;
@@ -28,6 +32,22 @@ public class SongManager {
         playedSongs = new ArrayList<>();
         songs = new ArrayList<>();
         this.activity = activity;
+    }
+
+
+    public String getMostPlayedSongs() {
+        Map<String, Integer> songPlayCount = new HashMap<>();
+
+        for (Song song : playedSongs) {
+            songPlayCount.put(song.getData()+"\n---", songPlayCount.getOrDefault(song.title, 0) + 1);
+        }
+
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(songPlayCount.entrySet());
+        list.sort((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()));
+
+        return list.stream()
+                .map(Map.Entry::getKey)
+                .collect(Collectors.joining(", "));
     }
 
     public String getSongsBy(String artistName) {
@@ -52,7 +72,6 @@ public class SongManager {
         return songsString.toString();
     }
 
-
     public String getAllAlbums() {
         Set<String> albumSet = new HashSet<>();
 
@@ -74,6 +93,28 @@ public class SongManager {
             }
         }
         return String.join(", ", genreSet);
+    }
+
+    public String getSongsOnAlbum(String albumName) {
+        StringBuilder songsString = new StringBuilder();
+
+        for (Song s : songs) {
+            if (s.album.trim().equals(albumName.trim())) {
+                songsString.append(s.getData()).append("\n---");
+            }
+        }
+
+        return songsString.toString();
+    }
+
+    // TODO: each song should have a hash
+    public Song getSong(String songName) {
+        for (Song s : songs) {
+            if (s.title.equals(songName)) {
+                return s;
+            }
+        }
+        return null;
     }
 
     @NonNull

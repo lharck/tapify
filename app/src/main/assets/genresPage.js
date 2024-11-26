@@ -1,24 +1,15 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-//    const musicData = getMusicData();
-//
-//    musicData.forEach((song, index) => {
-//       addListItem(song.Artist);
-//    });
-    const artistsString = androidInterface.getArtists();
+    const genresString = androidInterface.getGenres();
+    const genres = genresString.split(",");
 
-    if(artistsString.length == 0){return;}
-
-    const artists = artistsString.split(",");
-
-    console.log("************artists: ", artists);
-    artists.forEach(artist => {
-        addListItem(artist);
+    genres.forEach(genre => {
+        addListItem(genre);
     })
 });
 
-function addListItem(artist){
+function addListItem(genre){
     const buttonList = document.querySelector('.buttonList');
     const newListItem = document.createElement('li');
     newListItem.classList.add('listItem');
@@ -30,7 +21,7 @@ function addListItem(artist){
 
     const newTitle = document.createElement('p');
     newTitle.classList.add('title', 'fullTitle');
-    newTitle.textContent = artist;
+    newTitle.textContent = genre;
     newListItem.appendChild(newTitle);
 
     const shuffleImg = document.createElement('img');
