@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="PageDefault.css">
-    <link rel="stylesheet" href="lists.css">
-    <link rel="stylesheet" href="HomePage.css">
+    <link rel="stylesheet" href="../css/PageDefault.css">
+    <link rel="stylesheet" href="../css/lists.css">
+    <link rel="stylesheet" href="../css/HomePage.css">
+
 </head>
 
 <body>
@@ -17,7 +18,13 @@
 
 <main class="container">
     <div class="search-div">
-        <input type="text" class="search-box" id="search" placeholder="What would you like to search?" name="search">
+        <input
+                type="text"
+                class="search-box"
+                id="search"
+                placeholder="Search for music, albums, or artists..."
+                name="search">
+        <img src="../images/icon.png" alt="Search Icon" class="search-icon">
     </div>
 
     <ul class="buttonList">
@@ -40,15 +47,15 @@
     </div>
 
     <nav class="navBar">
-        <button class="navButton" onclick="window.location.href='../index.html';">
-            <img class="navImage" src="https://via.placeholder.com/50" alt="Home Icon">
+        <button class="navButton" onclick="window.location.href='index.html';">
+            <img class="navImage" src="../images/home.png" alt="Home Icon">
             <span>Home</span>
         </button>
-        <button class="navButton" onclick="window.location.href='../html/Search.html';">
-            <img class="navImage" src="https://via.placeholder.com/50" alt="Search Icon">
-            <span>Search</span>
+        <button class="navButton" onclick="window.location.href='html/Search.html';">
+            <img class="navImage" src="../images/icon.png" alt="Search Icon">
+            <span>Search</span> 
         </button>
-    </nav>
+    </nav> 
 </footer>
 
 </body>
