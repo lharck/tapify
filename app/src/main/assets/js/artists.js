@@ -18,7 +18,7 @@ function addListItem(artist){
     newImage.src = '../images/inRainbows.jpg';
     newListItem.appendChild(newImage);
 
-    const newTitle = document.createElement('p');
+   const newTitle = document.createElement('p');
     newTitle.classList.add('title', 'fullTitle');
     newTitle.textContent = artist;
     newListItem.appendChild(newTitle);

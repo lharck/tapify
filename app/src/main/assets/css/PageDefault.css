@@ -1,11 +1,10 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #000000;
+    background: linear-gradient(120deg, #2a003d, #000000);
+    color: white;
     font-family: 'Poppins', sans-serif;
 }
+/* ---------------------------- */
 
-/* Styling for the title at the top of each screen */
 .pageTitle {
     position: fixed;
     top: 0;
@@ -24,32 +23,41 @@ body {
     letter-spacing: 1px;
 }
 
-/* Styling for the top bar container */
 .topBar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
+    margin: 20px 0px;
     background: linear-gradient(90deg, #2a003d, #1e1e1e);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     z-index: 100;
     height: 60px;
 }
+/* ---------------------------- */
 
-/* Add optional hover effects for interactivity */
 .pageTitle:hover {
     color: #e0e0e0;
     text-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
     transition: color 0.3s, text-shadow 0.3s;
 }
 
-/* Styling for the progress bar at the bottom of each screen */
+.container {
+    max-width: 1200px;
+    margin: 0px auto 70px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* ---------------------------- */
+
 .bottomBar {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #292828;
     color: white;
     height: 100px;
 }
@@ -106,7 +114,6 @@ body {
     height: 50%;
 }
 
-/* Footer container */
 .bottomBar {
     position: fixed;
     bottom: 0;
@@ -123,7 +130,6 @@ body {
     height: auto; /* Allow height to adjust dynamically */
 }
 
-/* Song info section */
 .songInfoBar {
     display: flex;
     align-items: center;
@@ -132,14 +138,12 @@ body {
     gap: 10px; /* Spacing between image and progress bar */
 }
 
-/* Song preview image */
 .songPreview {
     width: 40px;
     height: 40px;
     border-radius: 5px;
 }
 
-/* Progress bar container */
 .progressBarBG {
     flex-grow: 1;
     height: 6px; /* Slightly larger for better visibility */
@@ -156,7 +160,6 @@ body {
     border-radius: 3px 0 0 3px;
 }
 
-/* Navbar within footer */
 .navBar {
     display: flex;
     justify-content: center;
@@ -165,7 +168,6 @@ body {
     gap: 30px;
 }
 
-/* Navigation buttons */
 .navButton {
     display: flex;
     flex-direction: column;
