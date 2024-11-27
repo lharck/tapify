@@ -1,8 +1,6 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const albumsString = androidInterface.getAlbums();
-    const albums = albumsString.split(",");
+    const albums = albumsString.split(", ");
 
     albums.forEach(album => {
         addListItem(album);
@@ -16,7 +14,8 @@ function addListItem(album){
 
     const newImage = document.createElement('img');
     newImage.classList.add('image');
-    newImage.src = '../images/inRainbows.jpg';
+    console.log(album)
+    newImage.src = getAlbumCover(album, "..");
     newListItem.appendChild(newImage);
 
     const newTitle = document.createElement('p');
@@ -39,7 +38,8 @@ function addListItem(album){
     newListItem.appendChild(playImg);
 
     playImg.addEventListener('click', function() {
-        console.log('play button clicked!');
+        const songName = newTitle.textContent;
+        androidInterface.playSongTitled(songTitle);
     });
 
     newTitle.addEventListener('click', function(){

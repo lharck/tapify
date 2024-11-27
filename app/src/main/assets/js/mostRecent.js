@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const albumName = sessionStorage.getItem("pageTitle");
-    const pageTitle = document.querySelector('.pageTitle');
-    pageTitle.textContent = albumName;
 
-    const songsString = androidInterface.getSongsOnAlbum(albumName);
+    const songsString = androidInterface.getMostRecentlyPlayedSongs();
     let songs = parseSongsString(songsString);
 
-   songs.forEach(song => {addListItem(song);})
+    for (let i = songs.length - 1; i >= 0; i--) {
+        addListItem(songs[i]);
+    }
 });
 
 function addListItem(song){
@@ -16,7 +15,7 @@ function addListItem(song){
 
     const newImage = document.createElement('img');
     newImage.classList.add('image');
-    newImage.src = getAlbumCover(song.Album, "..");;
+    newImage.src = getAlbumCover(song.Album, "..");
     newListItem.appendChild(newImage);
 
     const newTitle = document.createElement('p');
@@ -30,8 +29,8 @@ function addListItem(song){
     newListItem.appendChild(playImg);
 
     newListItem.addEventListener('click', function() {
-        const songTitle = newListItem.querySelector('.title').textContent;
-        androidInterface.playSongTitled(songTitle);
+        const songName = newTitle.textContent;
+        androidInterface.playSongTitled(songName);
     });
 
     buttonList.appendChild(newListItem);

@@ -50,6 +50,16 @@ public class SongManager {
                 .collect(Collectors.joining(", "));
     }
 
+    public String getMostRecentlyPlayedSongs() {
+        StringBuilder songsString = new StringBuilder();
+
+        for (Song s : playedSongs) {
+            songsString.append(s.getData()).append("\n---");
+        }
+
+        return songsString.toString();
+    }
+
     public String getSongsBy(String artistName) {
         StringBuilder songsString = new StringBuilder();
 
@@ -76,7 +86,7 @@ public class SongManager {
         Set<String> albumSet = new HashSet<>();
 
         for (Song s : songs) {
-            albumSet.add(s.album.trim());
+            albumSet.add(s.album);
         }
 
         Log.d("SongManager", String.join(", ", albumSet));
@@ -88,9 +98,7 @@ public class SongManager {
 
         for (Song s : songs) {
             String[] genres = s.genre.split(", ");
-            for (String genre : genres) {
-                genreSet.add(genre.trim());
-            }
+            genreSet.addAll(Arrays.asList(genres));
         }
         return String.join(", ", genreSet);
     }
@@ -128,7 +136,7 @@ public class SongManager {
             if (!uniqueArtists.contains(artist)) {
                 uniqueArtists.add(artist);
                 if (artistsString.length() > 0) {
-                    artistsString.append(",");
+                    artistsString.append(", ");
                 }
                 artistsString.append(artist);
             }

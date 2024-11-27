@@ -1,18 +1,8 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
-//    const musicData = getMusicData();
-//
-//    musicData.forEach((song, index) => {
-//       addListItem(song.Artist);
-//    });
     const artistsString = androidInterface.getArtists();
-
     if(artistsString.length == 0){return;}
 
-    const artists = artistsString.split(",");
-
-    console.log("************artists: ", artists);
+    const artists = artistsString.split(", ");
     artists.forEach(artist => {
         addListItem(artist);
     })
@@ -48,7 +38,8 @@ function addListItem(artist){
     newListItem.appendChild(playImg);
 
     playImg.addEventListener('click', function() {
-        console.log('play button clicked!');
+       const songName = newTitle.textContent;
+       androidInterface.playSongTitled(songTitle);
     });
 
     newTitle.addEventListener('click', function(){

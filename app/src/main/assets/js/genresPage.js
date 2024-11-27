@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const genresString = androidInterface.getGenres();
     const genres = genresString.split(",");
@@ -39,7 +37,8 @@ function addListItem(genre){
     newListItem.appendChild(playImg);
 
     playImg.addEventListener('click', function() {
-        console.log('play button clicked!');
+        const songName = newTitle.textContent;
+        androidInterface.playSongTitled(songTitle);
     });
 
     newTitle.addEventListener('click', function(){

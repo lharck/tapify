@@ -77,6 +77,10 @@ public class MainActivity extends AppCompatActivity {
         return songManager.getMostPlayedSongs();
     }
 
+    @JavascriptInterface
+    public String getMostRecentlyPlayedSongs() {
+        return songManager.getMostRecentlyPlayedSongs();
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
