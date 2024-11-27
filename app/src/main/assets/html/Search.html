@@ -1,50 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="../css/PageDefault.css">
-    <link rel="stylesheet" href="../css/lists.css">
-    <link rel="stylesheet" href="../css/HomePage.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="PageDefault.css">
+    <link rel="stylesheet" href="lists.css">
+    <link rel="stylesheet" href="HomePage.css">
 </head>
 
 <body>
-<p class="pageTitle">Search</p>
+<header class="topBar">
+    <p class="pageTitle">Search</p>
+</header>
 
-<div class="container">
+<main class="container">
     <div class="search-div">
         <input type="text" class="search-box" id="search" placeholder="What would you like to search?" name="search">
     </div>
 
     <ul class="buttonList">
         <li class="listItem">
-            <img class="image" src="https://via.placeholder.com/50">
+            <img class="image" src="https://via.placeholder.com/50" alt="Placeholder">
             <p class="title fullTitle">Title</p>
             <button class="invisibleButton">
-                <img class="image" src="https://via.placeholder.com/50">
+                <img class="image" src="https://via.placeholder.com/50" alt="Placeholder">
             </button>
         </li>
     </ul>
-</div>
+</main>
 
-<div class="bottomBar">
-    <div class = songInfoBar>
+<footer class="bottomBar">
+    <div class="songInfoBar">
+        <img src="https://via.placeholder.com/50" class="songPreview" alt="Now Playing">
         <div class="progressBarBG">
-            <div class="progressBar">
-
-            </div>
+            <div class="progressBar"></div>
         </div>
-        <img src="https://via.placeholder.com/50" class="songPreview">
     </div>
 
-    <div class="navBar">
-        <button class="invisibleButton" onclick="window.location.href='../index.html'">
-            <img class="navImage" src="https://via.placeholder.com/50">
-            home
+    <nav class="navBar">
+        <button class="navButton" onclick="window.location.href='../index.html';">
+            <img class="navImage" src="https://via.placeholder.com/50" alt="Home Icon">
+            <span>Home</span>
         </button>
-        <button class="invisibleButton" onclick="window.location.href='../html/Search.html'">
-            <img class="navImage" src="https://via.placeholder.com/50">
-            search
+        <button class="navButton" onclick="window.location.href='../html/Search.html';">
+            <img class="navImage" src="https://via.placeholder.com/50" alt="Search Icon">
+            <span>Search</span>
         </button>
-    </div>
-</div>
+    </nav>
+</footer>
+
 </body>
 </html>

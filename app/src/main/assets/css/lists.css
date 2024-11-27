@@ -1,44 +1,119 @@
 .buttonList {
     list-style-type: none;
-    margin: 30px;
-    margin-top: 100px;
-
     padding: 0;
-    max-height: 650px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    overscroll-behavior: none;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 800px;
 }
 
 .listItem {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-    background-color: #222121;
-    border: none;
-    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     margin: 10px 0;
+    padding: 15px;
     border-radius: 10px;
-    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.3s;
 }
 
-
-.title {
-    color: white;
-    font-size: 20px;
-    margin: 0;
-    padding-right: 10px;
-    white-space: nowrap;
+.listItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(143, 6, 238, 0.5);
 }
-
-.fullTitle {
-    font-size: 30px;
-}
-
 
 .image {
     width: 50px;
     height: 50px;
-    border-radius: 5px;
-    margin-right: 10px;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+.title {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    flex-grow: 1;
+}
+
+.invisibleButton {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.invisibleButton img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.invisibleButton img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(143, 6, 238, 0.5);
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(90deg, #2a003d, #000000);
+    padding: 10px 0;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.navButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.navButton.active {
+    color: #8f06ee;
+    position: relative;
+}
+
+.navButton.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 3px;
+    background: #8f06ee;
+    border-radius: 2px;
+}
+
+.navButton:hover {
+    color: #8f06ee;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(143, 6, 238, 0.5);
+}
+
+.navImage {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 5px;
+    transition: transform 0.3s;
+}
+
+.navButton:hover .navImage {
+    transform: scale(1.2);
 }
