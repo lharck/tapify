@@ -26,6 +26,7 @@ function parseSongsString(songsString) {
 function getAlbumCover(albumName, root) {
     const albumCovers = {
         "Operation": root + "/images/Doomsday.png",
+        "Operation: Doomsday": root + "/images/Doomsday.png",
         "OK Computer": root + "/images/OkComputer.png",
         "MM..FOOD": root + "/images/MMFood.png"
     };

@@ -43,6 +43,7 @@ body {
 
 .container {
     max-width: 1200px;
+    max-height: 10px;
     margin: 0px auto 70px auto;
     padding: 0 20px;
     display: flex;

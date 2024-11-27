@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const albums = albumsString.split(", ");
 
     albums.forEach(album => {
-        addListItem(album);
+        addListItem(album.trim());
     })
 });
 
