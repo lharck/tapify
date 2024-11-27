@@ -25,7 +25,7 @@ function parseSongsString(songsString) {
 // TODO: temporary hardcoding for album covers
 function getAlbumCover(albumName, root) {
     const albumCovers = {
-        "Operation: Doomsday": root + "/images/Doomsday.png",
+        "Operation": root + "/images/Doomsday.png",
         "OK Computer": root + "/images/OkComputer.png",
         "MM..FOOD": root + "/images/MMFood.png"
     };
