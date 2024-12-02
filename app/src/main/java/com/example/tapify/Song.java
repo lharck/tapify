@@ -15,14 +15,13 @@ public class Song {
     public String path;
 
     public Song(String title, String artist, String album, String genre, long duration, String data, long albumId) {
-        this.title = title;
-        this.artist = artist;
-        this.album = album;
-        this.genre = genre;
+        this.title = title.trim();
+        this.artist = artist.trim();
+        this.album = album.trim();
+        this.genre = genre.trim();
         this.duration = duration;
-        this.data = data;
+        this.data = data.trim();
         this.albumId = albumId;
-        this.path = path;
     }
 
     public String getData(){

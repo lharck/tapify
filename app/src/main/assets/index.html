@@ -8,52 +8,18 @@
 
     <link rel="stylesheet" href="css/PageDefault.css">
     <link rel="stylesheet" href="css/HomePage.css">
+    <link rel="stylesheet" href="css/lists.css">
 </head>
 
 <body>
+
 <header class="topBar">
-    <h1 class="pageTitle">Home</h1>
+    <h1 id="pageTitle">Home</h1>
 </header>
 
-<main class="container">
-    <div class="search-div">
-        <input
-                type="text"
-                class="search-box"
-                id="search"
-                placeholder="Search for music, albums, or artists..."
-                name="search">
-        <img src="images/icon.png" alt="Search Icon" class="search-icon">
-    </div>
+<main id="container"></main>
 
-    <section class="grid-container">
-        <button class="homeButton" onclick="window.location.href='html/Playlists.html';">
-            <img src="images/playlist.png" alt="Playlist Icon" class="icon">
-            <span>Playlists</span> 
-        </button>
-        <button class="homeButton" onclick="window.location.href='html/allArtistsAlbums.html';">
-            <img src="images/albums.png" alt="Albums Icon" class="icon">
-            <span>Albums</span> 
-        </button>
-        <button class="homeButton" onclick="window.location.href='html/Artists.html';">
-            <img src="images/artists.png" alt="Artists Icon" class="icon">
-            <span>Artists</span>
-
-        </button>
-        <button class="homeButton" onclick="window.location.href='html/Genres.html';">
-            <img src="images/genres.png" alt="Genres Icon" class="icon">
-            <span>Genres</span> 
-        </button>
-        <button class="homeButton" onclick="window.location.href='html/MostRecent.html';">
-            <img src="images/recentlyPlayed.png" alt="Recently Played Icon" class="icon">
-            <span>Recently Played</span>  
-        </button>
-        <button class="homeButton" onclick="window.location.href='html/MostPlayed.html';">
-            <img src="images/mostPlayed.png" alt="Most Played Icon" class="icon">
-            <span>Most Played</span> 
-        </button>
-    </section>
-</main>
+</body>
 
 <footer class="bottomBar">
     <div class="songInfoBar">
@@ -68,12 +34,26 @@
             <img class="navImage" src="images/home.png" alt="Home Icon">
             <span>Home</span>
         </button>
-        <button class="navButton" onclick="window.location.href='html/Search.html';">
+        <button class="navButton" onclick="searchPage.show()">
             <img class="navImage" src="images/icon.png" alt="Search Icon">
             <span>Search</span>
         </button>
     </nav>
 </footer>
 
-</body>
+<!--TODO: get rid of this long list with module imports? -->
+<script src="js/index.js"></script>
+<script src="js/search.js"></script>
+<script src="js/artists.js"></script>
+<script src="js/playlists.js"></script>
+<script src="js/albums.js"></script>
+<script src="js/genres.js"></script>
+<script src="js/mostRecent.js"></script>
+<script src="js/mostPlayed.js"></script>
+<script src="js/albumsByArtist.js"></script>
+<script src="js/singleAlbum.js"></script>
+<script src="js/singleGenre.js"></script>
+
+<script src="js/Utils.js"></script>
+
 </html>

@@ -1,4 +1,4 @@
-const mostPlayedPage = (function(){
+const albumsByArtistPage = (function(){
     function addListItem(song){
         const buttonList = document.querySelector('.buttonList');
         const newListItem = document.createElement('li');
@@ -20,27 +20,30 @@ const mostPlayedPage = (function(){
         newListItem.appendChild(playImg);
 
         newListItem.addEventListener('click', function() {
-            const songName = newTitle.textContent;
-            androidInterface.playSongTitled(songName);
+           const songName = newTitle.textContent;
+           androidInterface.playSongTitled(songName);
         });
 
         buttonList.appendChild(newListItem);
     }
 
-    function addList(){
-        const songsString = androidInterface.getMostPlayedSongs();
-        let songs = parseSongsString(songsString);
-
-        for (let i = songs.length - 1; i >= 0; i--) {
-            addListItem(songs[i]);
-        }
+    function addList(artistName){
+       const songsString = androidInterface.getSongsBy(artistName);
+       let songs = parseSongsString(songsString);
+       console.log(songs)
+       songs.forEach(song => {
+            addListItem(song);
+        })
     }
 
-    function show(){
-        document.getElementById('pageTitle').textContent = 'Most Played';
+    function show(artistName){
+        document.getElementById("pageTitle").textContent = artistName
+
         initList();
-        addList();
+        addList(artistName);
     }
 
-    return{show}
-})()
+    return {show}
+})();
+
+

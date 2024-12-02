@@ -47,7 +47,7 @@ public class SongManager {
 
         return list.stream()
                 .map(Map.Entry::getKey)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(","));
     }
 
     public String getMostRecentlyPlayedSongs() {
@@ -89,8 +89,8 @@ public class SongManager {
             albumSet.add(s.album);
         }
 
-        Log.d("SongManager", String.join(", ", albumSet));
-        return String.join(", ", albumSet);
+        Log.d("SongManager", String.join(",", albumSet));
+        return String.join(",", albumSet);
     }
 
     public String getAllGenres() {
@@ -100,7 +100,20 @@ public class SongManager {
             String[] genres = s.genre.split(", ");
             genreSet.addAll(Arrays.asList(genres));
         }
-        return String.join(", ", genreSet);
+        return String.join(",", genreSet);
+    }
+
+    public String getSongsByGenre(String genre) {
+        StringBuilder genresString = new StringBuilder();
+
+        for (Song s : songs) {
+            String[] genres = s.genre.split(", ");
+            if (Arrays.asList(genres).contains(genre)) {
+                genresString.append(s.getData()).append("\n---");
+            }
+        }
+
+        return genresString.toString();
     }
 
     public String getSongsOnAlbum(String albumName) {
@@ -136,7 +149,7 @@ public class SongManager {
             if (!uniqueArtists.contains(artist)) {
                 uniqueArtists.add(artist);
                 if (artistsString.length() > 0) {
-                    artistsString.append(", ");
+                    artistsString.append(",");
                 }
                 artistsString.append(artist);
             }
@@ -177,8 +190,8 @@ public class SongManager {
                 String data = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA));
                 String genre = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.GENRE));
                 long albumId = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM_ID));
-                Log.d("SongManager", title + "\nartist: " + artist + "\nalbum: " + album + "\ngenre: " + genre + "\nduration: " + duration + "\ndata:" + data + "\nalbum id:" + albumId);
-
+               /* Log.d("SongManager", title + "\nartist: " + artist + "\nalbum: " + album + "\ngenre: " + genre + "\nduration: " + duration + "\ndata:" + data + "\nalbum id:" + albumId);
+*/
                 songs.add(new Song(title, artist, album, genre, duration, data, albumId));
             }
             cursor.close();
@@ -189,7 +202,6 @@ public class SongManager {
         String albumArtUri = String.valueOf(ContentUris.withAppendedId(
                 Uri.parse("content://media/external/audio/albumart"), albumId)
         );
-        Log.d("testing", "currently: " + albumArtUri);
 
         return albumArtUri;
     }

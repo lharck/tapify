@@ -73,13 +73,14 @@ public class MainActivity extends AppCompatActivity {
     public void playSongTitled(String songName) {playMusic(songManager.getSong(songName));}
 
     @JavascriptInterface
-    public String getMostPlayedSongs() {
-        return songManager.getMostPlayedSongs();
-    }
+    public String getMostPlayedSongs() {return songManager.getMostPlayedSongs();}
 
     @JavascriptInterface
-    public String getMostRecentlyPlayedSongs() {
-        return songManager.getMostRecentlyPlayedSongs();
+    public String getMostRecentlyPlayedSongs() {return songManager.getMostRecentlyPlayedSongs();}
+
+    @JavascriptInterface
+    public String getSongsByGenre(String genre) {
+        return songManager.getSongsByGenre(genre);
     }
 
     @Override
@@ -105,8 +106,6 @@ public class MainActivity extends AppCompatActivity {
             mediaPlayer.prepare();
             mediaPlayer.start();
             songManager.playedSongs.add(songToPlay);
-
-            Log.d("testing", songManager.getMostPlayedSongs());
         } catch (IOException e) {
             Toast.makeText(this, "Failed to play music: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }

@@ -5,7 +5,7 @@ body {
 }
 /* ---------------------------- */
 
-.pageTitle {
+#pageTitle {
     position: fixed;
     top: 0;
     left: 0;
@@ -35,7 +35,7 @@ body {
 }
 /* ---------------------------- */
 
-.pageTitle:hover {
+#pageTitle:hover {
     color: #e0e0e0;
     text-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
     transition: color 0.3s, text-shadow 0.3s;

@@ -8,7 +8,6 @@ function parseSongsString(songsString) {
 
     lines.forEach(line => {
       const [key, value] = line.split(':', 2)
-      console.log(key + " " + value)
       if (key && value) {
         song[key] = value;
       }
@@ -23,7 +22,8 @@ function parseSongsString(songsString) {
 
 
 // TODO: temporary hardcoding for album covers
-function getAlbumCover(albumName, root) {
+function getAlbumCover(albumName, root=".") {
+    console.log(albumName)
     const albumCovers = {
         "Operation": root + "/images/Doomsday.png",
         "Operation: Doomsday": root + "/images/Doomsday.png",
@@ -34,4 +34,10 @@ function getAlbumCover(albumName, root) {
     return albumCovers[albumName.trim()];
 }
 
+function initList(){
+    const container = document.getElementById('container');
+    container.innerHTML = `
+        <ul class="buttonList"></ul>
+    `;
+}
 

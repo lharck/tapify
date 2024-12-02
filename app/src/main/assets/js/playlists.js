@@ -1,4 +1,4 @@
-const artistsPage = (function(){
+const playlistPage = (function(){
     function addListItem(artist){
         const buttonList = document.querySelector('.buttonList');
         const newListItem = document.createElement('li');
@@ -34,8 +34,7 @@ const artistsPage = (function(){
         });
 
         newTitle.addEventListener('click', function(){
-            const artistName = newTitle.textContent;
-            albumsByArtistPage.show(artistName);
+            console.log("Clicked title");
         })
 
         buttonList.appendChild(newListItem);
@@ -51,15 +50,13 @@ const artistsPage = (function(){
         })
     }
 
-
     function show(){
-        document.getElementById('pageTitle').textContent = 'Artists';
+        document.getElementById('pageTitle').textContent = 'Playlists';
         initList();
         addList();
     }
 
     return{show}
-})();
-
+})()
 
 

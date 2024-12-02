@@ -1,4 +1,8 @@
-const mostPlayedPage = (function(){
+const singleGenrePage = (function(){
+    document.addEventListener('DOMContentLoaded', () => {
+
+    });
+
     function addListItem(song){
         const buttonList = document.querySelector('.buttonList');
         const newListItem = document.createElement('li');
@@ -20,27 +24,24 @@ const mostPlayedPage = (function(){
         newListItem.appendChild(playImg);
 
         newListItem.addEventListener('click', function() {
-            const songName = newTitle.textContent;
-            androidInterface.playSongTitled(songName);
+            const songTitle = newListItem.querySelector('.title').textContent;
+            androidInterface.playSongTitled(songTitle);
         });
 
         buttonList.appendChild(newListItem);
     }
 
-    function addList(){
-        const songsString = androidInterface.getMostPlayedSongs();
+    function addList(genreName){
+        const songsString = androidInterface.getSongsByGenre(genreName);
         let songs = parseSongsString(songsString);
-
-        for (let i = songs.length - 1; i >= 0; i--) {
-            addListItem(songs[i]);
-        }
+        songs.forEach(song => {addListItem(song);})
     }
 
-    function show(){
-        document.getElementById('pageTitle').textContent = 'Most Played';
+    function show(genreName){
+        document.getElementById('pageTitle').textContent = genreName;
         initList();
-        addList();
+        addList(genreName);
     }
 
-    return{show}
-})()
+    return {show}
+})();

@@ -1,38 +1,46 @@
-document.addEventListener('DOMContentLoaded', () => {
+const mostRecentPage = (function(){
+    function addListItem(song){
+        const buttonList = document.querySelector('.buttonList');
+        const newListItem = document.createElement('li');
+        newListItem.classList.add('listItem');
 
-    const songsString = androidInterface.getMostRecentlyPlayedSongs();
-    let songs = parseSongsString(songsString);
+        const newImage = document.createElement('img');
+        newImage.classList.add('image');
+        newImage.src = getAlbumCover(song.Album);
+        newListItem.appendChild(newImage);
 
-    for (let i = songs.length - 1; i >= 0; i--) {
-        addListItem(songs[i]);
+        const newTitle = document.createElement('p');
+        newTitle.classList.add('title', 'fullTitle');
+        newTitle.textContent = song.Title;
+        newListItem.appendChild(newTitle);
+
+        const playImg = document.createElement('img');
+        playImg.classList.add('image');
+        playImg.src = './images/play.png';
+        newListItem.appendChild(playImg);
+
+        newListItem.addEventListener('click', function() {
+            const songName = newTitle.textContent;
+            androidInterface.playSongTitled(songName);
+        });
+
+        buttonList.appendChild(newListItem);
     }
-});
 
-function addListItem(song){
-    const buttonList = document.querySelector('.buttonList');
-    const newListItem = document.createElement('li');
-    newListItem.classList.add('listItem');
+    function addList(){
+        const songsString = androidInterface.getMostRecentlyPlayedSongs();
+        let songs = parseSongsString(songsString);
 
-    const newImage = document.createElement('img');
-    newImage.classList.add('image');
-    newImage.src = getAlbumCover(song.Album, "..");
-    newListItem.appendChild(newImage);
+        for (let i = songs.length - 1; i >= 0; i--) {
+            addListItem(songs[i]);
+        }
+    }
 
-    const newTitle = document.createElement('p');
-    newTitle.classList.add('title', 'fullTitle');
-    newTitle.textContent = song.Title;
-    newListItem.appendChild(newTitle);
+    function show(){
+        document.getElementById('pageTitle').textContent = 'Recently Played';
+        initList();
+        addList();
+    }
 
-    const playImg = document.createElement('img');
-    playImg.classList.add('image');
-    playImg.src = '../images/play.png';
-    newListItem.appendChild(playImg);
-
-    newListItem.addEventListener('click', function() {
-        const songName = newTitle.textContent;
-        androidInterface.playSongTitled(songName);
-    });
-
-    buttonList.appendChild(newListItem);
-}
-
+    return{show}
+})()

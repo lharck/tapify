@@ -1,22 +1,22 @@
-const artistsPage = (function(){
-    function addListItem(artist){
+const albumsPage = (function(){
+    function addListItem(album){
         const buttonList = document.querySelector('.buttonList');
         const newListItem = document.createElement('li');
         newListItem.classList.add('listItem');
 
         const newImage = document.createElement('img');
         newImage.classList.add('image');
-        newImage.src = 'images/inRainbows.jpg';
+        newImage.src = getAlbumCover(album);
         newListItem.appendChild(newImage);
 
-       const newTitle = document.createElement('p');
+        const newTitle = document.createElement('p');
         newTitle.classList.add('title', 'fullTitle');
-        newTitle.textContent = artist;
+        newTitle.textContent = album;
         newListItem.appendChild(newTitle);
 
         const shuffleImg = document.createElement('img');
         shuffleImg.classList.add('image');
-        shuffleImg.src = 'images/shuffle.png';
+        shuffleImg.src = './images/shuffle.png';
         newListItem.appendChild(shuffleImg);
 
         shuffleImg.addEventListener('click', function() {
@@ -25,41 +25,36 @@ const artistsPage = (function(){
 
         const playImg = document.createElement('img');
         playImg.classList.add('image');
-        playImg.src = 'images/play.png';
+        playImg.src = './images/play.png';
         newListItem.appendChild(playImg);
 
         playImg.addEventListener('click', function() {
-           const songName = newTitle.textContent;
-           androidInterface.playSongTitled(songTitle);
+            const songName = newTitle.textContent;
+            androidInterface.playSongTitled(songTitle);
         });
 
         newTitle.addEventListener('click', function(){
-            const artistName = newTitle.textContent;
-            albumsByArtistPage.show(artistName);
+            const albumName = newTitle.textContent;
+            singleAlbumPage.show(albumName);
         })
 
         buttonList.appendChild(newListItem);
     }
 
     function addList(){
-        const artistsString = androidInterface.getArtists();
-        if(artistsString.length == 0){return;}
+        const albumsString = androidInterface.getAlbums();
+        const albums = albumsString.split(",");
 
-        const artists = artistsString.split(",");
-        artists.forEach(artist => {
-            addListItem(artist);
+        albums.forEach(album => {
+            console.log(album)
+            addListItem(album.trim());
         })
     }
 
-
     function show(){
-        document.getElementById('pageTitle').textContent = 'Artists';
+        document.getElementById('pageTitle').textContent = 'Albums';
         initList();
         addList();
     }
-
-    return{show}
+    return {show}
 })();
-
-
-

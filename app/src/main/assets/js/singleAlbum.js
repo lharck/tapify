@@ -1,39 +1,46 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const albumName = sessionStorage.getItem("pageTitle");
-    const pageTitle = document.querySelector('.pageTitle');
-    pageTitle.textContent = albumName;
+const singleAlbumPage = (function(){
+    function addListItem(song){
+        const buttonList = document.querySelector('.buttonList');
+        const newListItem = document.createElement('li');
+        newListItem.classList.add('listItem');
 
-    const songsString = androidInterface.getSongsOnAlbum(albumName);
-    let songs = parseSongsString(songsString);
+        const newImage = document.createElement('img');
+        newImage.classList.add('image');
+        newImage.src = getAlbumCover(song.Album);
+        newListItem.appendChild(newImage);
 
-   songs.forEach(song => {addListItem(song);})
-});
+        const newTitle = document.createElement('p');
+        newTitle.classList.add('title', 'fullTitle');
+        newTitle.textContent = song.Title;
+        newListItem.appendChild(newTitle);
 
-function addListItem(song){
-    const buttonList = document.querySelector('.buttonList');
-    const newListItem = document.createElement('li');
-    newListItem.classList.add('listItem');
+        const playImg = document.createElement('img');
+        playImg.classList.add('image');
+        playImg.src = './images/play.png';
+        newListItem.appendChild(playImg);
 
-    const newImage = document.createElement('img');
-    newImage.classList.add('image');
-    newImage.src = getAlbumCover(song.Album, "..");;
-    newListItem.appendChild(newImage);
+        newListItem.addEventListener('click', function() {
+            const songTitle = newListItem.querySelector('.title').textContent;
+            androidInterface.playSongTitled(songTitle);
+        });
 
-    const newTitle = document.createElement('p');
-    newTitle.classList.add('title', 'fullTitle');
-    newTitle.textContent = song.Title;
-    newListItem.appendChild(newTitle);
+        buttonList.appendChild(newListItem);
+    }
 
-    const playImg = document.createElement('img');
-    playImg.classList.add('image');
-    playImg.src = '../images/play.png';
-    newListItem.appendChild(playImg);
+    function addList(albumName){
+        pageTitle.textContent = albumName;
 
-    newListItem.addEventListener('click', function() {
-        const songTitle = newListItem.querySelector('.title').textContent;
-        androidInterface.playSongTitled(songTitle);
-    });
+        const songsString = androidInterface.getSongsOnAlbum(albumName);
+        let songs = parseSongsString(songsString);
 
-    buttonList.appendChild(newListItem);
-}
+       songs.forEach(song => {addListItem(song);})
+    }
 
+    function show(albumName){
+        document.getElementById('pageTitle').textContent = 'Albums';
+        initList();
+        addList(albumName);
+    }
+
+    return{show}
+})();
