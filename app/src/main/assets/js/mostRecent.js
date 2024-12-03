@@ -1,20 +1,27 @@
-const mostRecentPage = (function(){
+const mostRecentPage = (function () {
 
+    const addedSongs = new Set();
 
-    function addList(){
+    function addList() {
         const songsString = androidInterface.getMostRecentlyPlayedSongs();
-        let songs = parseSongsString(songsString);
+        const songs = parseSongsString(songsString);
 
         for (let i = songs.length - 1; i >= 0; i--) {
-            addListItem(songs[i]);
+            const song = songs[i];
+            if (!addedSongs.has(song.id)) {
+                addListItem(song);
+                addedSongs.add(song.id);
+            }
         }
     }
 
-    function show(){
+    function show() {
         document.getElementById('pageTitle').textContent = 'Recently Played';
+
         initList();
+
         addList();
     }
 
-    return{show}
-})()
+    return { show };
+})();
