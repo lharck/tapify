@@ -54,50 +54,6 @@ body {
 
 /* ---------------------------- */
 
-.bottomBar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    color: white;
-    height: 100px;
-}
-
-.progressBarBG {
-    width: 100%;
-    height: 5px;
-    background-color: #474545;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.progressBar {
-    width: 50%;
-    height: 100%;
-    background-color: #8f06ee;
-}
-
-.songPreview {
-    height: 80%;
-    padding: 5px;
-}
-
-.songInfoBar {
-    height: 50%;
-}
-
-.navBar {
-    background-color: #1e1d1d;
-    height: 50%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.navButton {
-    background-color: #1e1d1d;
-    height: 50%;
-}
-
 .invisibleButton {
     display: flex;
     flex-direction: column;
@@ -128,15 +84,16 @@ body {
     padding: 10px;
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
     z-index: 10;
-    height: auto; /* Allow height to adjust dynamically */
+    height: auto;
 }
 
 .songInfoBar {
+    height: 50%;
     display: flex;
     align-items: center;
     width: 100%;
     padding: 5px 10px;
-    gap: 10px; /* Spacing between image and progress bar */
+    gap: 10px;
 }
 
 .songPreview {
@@ -146,8 +103,8 @@ body {
 }
 
 .progressBarBG {
-    flex-grow: 1;
-    height: 6px; /* Slightly larger for better visibility */
+    flex-grow: .75;
+    height: 6px;
     background-color: #474545;
     border-radius: 3px;
     overflow: hidden;
@@ -155,17 +112,22 @@ body {
 }
 
 .progressBar {
-    width: 50%; /* Example progress */
+    width: 0%;
     height: 100%;
     background-color: #8f06ee;
     border-radius: 3px 0 0 3px;
 }
 
+.songBarImg{
+    width: 50px;
+}
+
+
 .navBar {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 10px; /* Spacing between navbar and song info */
+    margin-top: 10px;
     gap: 30px;
 }
 
@@ -177,7 +139,7 @@ body {
     color: white;
     background: none;
     border: none;
-    font-size: 14px; /* Slightly larger text for readability */
+    font-size: 14px;
     cursor: pointer;
     transition: transform 0.3s, color 0.3s;
 }
@@ -188,7 +150,7 @@ body {
 }
 
 .navImage {
-    width: 24px; /* Slightly larger icons for better visibility */
+    width: 24px;
     height: 24px;
-    margin-bottom: 4px; /* Add spacing between icon and label */
+    margin-bottom: 4px;
 }

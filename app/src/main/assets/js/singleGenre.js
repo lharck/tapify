@@ -24,8 +24,7 @@ const singleGenrePage = (function(){
         newListItem.appendChild(playImg);
 
         newListItem.addEventListener('click', function() {
-            const songTitle = newListItem.querySelector('.title').textContent;
-            androidInterface.playSongTitled(songTitle);
+            playSong(song);
         });
 
         buttonList.appendChild(newListItem);

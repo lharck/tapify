@@ -33,7 +33,8 @@ public class Song {
                 + "\nGenre:" + this.genre
                 + "\nData:" + this.data
                 + "\nAlbumId:" + this.albumId
-                + "\nPath:" + this.path;
+                + "\nDuration:" + this.duration;
+
 
         return data;
     }

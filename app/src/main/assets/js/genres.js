@@ -1,6 +1,5 @@
 const genresPage = (function(){
     function addListItem(genre){
-
         const buttonList = document.querySelector('.buttonList');
         const newListItem = document.createElement('li');
         newListItem.classList.add('listItem');
@@ -23,15 +22,9 @@ const genresPage = (function(){
         shuffleImg.addEventListener('click', function() {
         });
 
-        const playImg = document.createElement('img');
-        playImg.classList.add('image');
-        playImg.src = './images/play.png';
-        newListItem.appendChild(playImg);
-
-        playImg.addEventListener('click', function() {
-            const songName = newTitle.textContent;
-            androidInterface.playSongTitled(songTitle);
-        });
+//        shuffleImg.addEventListener('click', function() {
+//            const genreName = newTitle.textContent;
+//        });
 
         newTitle.addEventListener('click', function(){
             const genreName = newTitle.textContent;
