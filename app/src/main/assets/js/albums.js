@@ -20,7 +20,6 @@ const albumsPage = (function(){
         newListItem.appendChild(shuffleImg);
 
         shuffleImg.addEventListener('click', function() {
-            console.log('Shuffle button clicked!');
         });
 
         const playImg = document.createElement('img');
@@ -46,7 +45,6 @@ const albumsPage = (function(){
         const albums = albumsString.split(",");
 
         albums.forEach(album => {
-            console.log(album)
             addListItem(album.trim());
         })
     }

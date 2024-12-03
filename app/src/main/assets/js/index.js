@@ -42,3 +42,9 @@ function showIndexPage(){
 }
 
 showIndexPage();
+
+const mainMenuSearchBar = document.getElementById('search');
+mainMenuSearchBar.addEventListener('input', function() {
+    searchPage.show(this.value);
+});
+

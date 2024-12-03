@@ -34,7 +34,6 @@ public class SongManager {
         this.activity = activity;
     }
 
-
     public String getMostPlayedSongs() {
         Map<String, Integer> songPlayCount = new HashMap<>();
 
@@ -49,6 +48,19 @@ public class SongManager {
                 .map(Map.Entry::getKey)
                 .collect(Collectors.joining(","));
     }
+
+    public String getSongsStartingWith(String prefix) {
+        StringBuilder songString = new StringBuilder();
+
+       for(Song s : songs){
+           if(s.title.toLowerCase().startsWith(prefix.toLowerCase())){
+               songString.append(s.getData()).append("\n---");
+           }
+       }
+
+       return songString.toString();
+    }
+
 
     public String getMostRecentlyPlayedSongs() {
         StringBuilder songsString = new StringBuilder();

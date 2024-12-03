@@ -20,7 +20,6 @@ const playlistPage = (function(){
         newListItem.appendChild(shuffleImg);
 
         shuffleImg.addEventListener('click', function() {
-            console.log('Shuffle button clicked!');
         });
 
         const playImg = document.createElement('img');
@@ -34,8 +33,7 @@ const playlistPage = (function(){
         });
 
         newTitle.addEventListener('click', function(){
-            console.log("Clicked title");
-        })
+F        })
 
         buttonList.appendChild(newListItem);
     }

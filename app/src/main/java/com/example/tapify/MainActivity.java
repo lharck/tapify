@@ -70,7 +70,9 @@ public class MainActivity extends AppCompatActivity {
     public String getSongsOnAlbum(String albumName) {return songManager.getSongsOnAlbum(albumName);}
 
     @JavascriptInterface
-    public void playSongTitled(String songName) {playMusic(songManager.getSong(songName));}
+    public void playSongTitled(String songName) { playMusic(songManager.getSong(songName)); }
+    @JavascriptInterface
+    public String getSongsStartingWith(String prefix){ return songManager.getSongsStartingWith(prefix);}
 
     @JavascriptInterface
     public String getMostPlayedSongs() {return songManager.getMostPlayedSongs();}

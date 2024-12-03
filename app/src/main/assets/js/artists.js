@@ -20,7 +20,6 @@ const artistsPage = (function(){
         newListItem.appendChild(shuffleImg);
 
         shuffleImg.addEventListener('click', function() {
-            console.log('Shuffle button clicked!');
         });
 
         const playImg = document.createElement('img');
