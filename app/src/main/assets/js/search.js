@@ -1,29 +1,4 @@
 const searchPage = (function(){
-    function addListItem(song){
-        const buttonList = document.querySelector('.buttonList');
-        const newListItem = document.createElement('li');
-        newListItem.classList.add('listItem');
-
-        const newImage = document.createElement('img');
-        newImage.classList.add('image');
-        newImage.src = getAlbumCover(song.Album);
-        newListItem.appendChild(newImage);
-
-        const newTitle = document.createElement('p');
-        newTitle.classList.add('title', 'fullTitle');
-        newTitle.textContent = song.Title;
-        newListItem.appendChild(newTitle);
-
-        const playImg = document.createElement('img');
-        playImg.classList.add('image');
-        playImg.src = './images/play.png';
-        newListItem.appendChild(playImg);
-
-        buttonList.appendChild(newListItem);
-
-        return newListItem;
-    }
-
     function initPage(existingText){
         const container = document.getElementById('container')
         container.innerHTML = `
@@ -53,10 +28,7 @@ const searchPage = (function(){
         const songsString = androidInterface.getSongsStartingWith(searchString);
         const songs = parseSongsString(songsString);
         songs.forEach(song => {
-            const listItem = addListItem(song);
-            listItem.addEventListener('click', function() {
-                playSong(song);
-            });
+            addListItem(song);
         })
     }
 

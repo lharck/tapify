@@ -1,3 +1,4 @@
+/* Music list css: */
 .buttonList {
     list-style-type: none;
     padding: 0;
@@ -24,11 +25,13 @@
 }
 
 .image {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 8px;
     margin-right: 15px;
 }
+
+
 
 .invisibleButton {
     background: none;
@@ -47,4 +50,34 @@
 .invisibleButton img:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(143, 6, 238, 0.5);
+}
+
+/**************************************/
+/* Metadata overlay CSS:*/
+/**************************************/
+
+.metadataOverlay {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  background-color: grey;
+  border-radius: 20px;
+}
+
+.okButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.cancelButton {
+    background-color: lightgray;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
 }
