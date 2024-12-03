@@ -6,7 +6,7 @@ const artistsPage = (function(){
 
         const newImage = document.createElement('img');
         newImage.classList.add('image');
-        newImage.src = 'images/inRainbows.jpg';
+        newImage.src = getIcon(artist);
         newListItem.appendChild(newImage);
 
         const newTitle = document.createElement('p');

@@ -1,3 +1,8 @@
+let playlists = {
+    "My Tunes": [],
+    "Chill Commute Mix": []
+}
+
 function parseSongsString(songsString) {
   const entries = songsString.split('---').map(entry => entry.trim()).filter(entry => entry.length > 0);
 
@@ -31,6 +36,18 @@ function getAlbumCover(albumName, root=".") {
     return albumCovers[albumName.trim()];
 }
 
+// TODO: temporary hardcoding
+function getIcon(imageName="default", root=".") {
+    const images = {
+        "MF DOOM": root + "/images/Doomsday.png",
+        "Radiohead": root + "/images/OkComputer.png",
+        "default": root + "/images/defaultCover.png",
+    };
+
+    return images[imageName.trim()];
+}
+
+
 function initList(){
     const container = document.getElementById('container');
     container.innerHTML = `
@@ -52,7 +69,7 @@ function playSong(song){
     progressBar.style.transition = 'none';
     progressBar.style.width = "0%";
     setTimeout(() => {
-      progressBar.style.transition = 'width 10s ease-in-out';
+      progressBar.style.transition = 'width 60s ease-in-out';
       progressBar.style.width = "100%";
     }, 50);
 
@@ -61,15 +78,15 @@ function playSong(song){
 function showMetadataEditor(song){
     // TODO: removing the overlay makes it so you cant click underneath for some reason??
     const container = document.getElementById('container');
-    container.innerHTML += `<div class="metadataOverlay"></div>`;
+    container.innerHTML += `<div class="overlay"></div>`;
 
-    const metadataOverlay = document.getElementsByClassName('metadataOverlay')[0];
+   const metadataOverlay = document.getElementsByClassName('overlay')[0];
 
    for (let key in song) {
         metadataOverlay.innerHTML += `
             <div style="display: flex; gap: 10px;">
                 ${key}
-                <input type="text" value="kjj" style="">
+                <input type="text" value="${song[key]}" style="">
             </div>
         `;
    }
@@ -126,5 +143,42 @@ function addListItem(song){
         showMetadataEditor(song);
     });
 
+    plusImg.addEventListener('click', function() {
+        showPlaylistMenu(song);
+    });
+
     buttonList.appendChild(newListItem);
+}
+
+function showPlaylistMenu(song){
+    const container = document.getElementById('container');
+    container.innerHTML += `<div class="overlay"></div>`;
+
+    const playlistOverlay = document.getElementsByClassName('overlay')[0];
+
+    for (let playlistName in playlists) {
+        const playlist = playlists[playlistName];
+        playlistOverlay.innerHTML += `
+            <div style="display: flex; gap: 10px;">
+                ${playlistName}
+                <img class="plusImg image" src="./images/plus.png" id="plusImg-${playlistName}" />
+            </div>
+        `;
+    }
+
+    playlistOverlay.innerHTML += `
+        <button id="cancelButton" class="cancelButton">Cancel</button>
+    `;
+
+    for (let playlistName in playlists) {
+        const plusImg = document.getElementById(`plusImg-${playlistName}`);
+        plusImg.addEventListener('click', function() {
+            playlists[playlistName].push(song);
+            container.removeChild(playlistOverlay);
+        });
+    }
+
+    document.getElementById('cancelButton').onclick = function() {
+        container.removeChild(playlistOverlay);
+    };
 }

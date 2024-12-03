@@ -6,7 +6,7 @@ const genresPage = (function(){
 
         const newImage = document.createElement('img');
         newImage.classList.add('image');
-        newImage.src = './images/inRainbows.jpg';
+        newImage.src = getIcon();
         newListItem.appendChild(newImage);
 
         const newTitle = document.createElement('p');
