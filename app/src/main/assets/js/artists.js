@@ -9,7 +9,7 @@ const artistsPage = (function(){
         newImage.src = 'images/inRainbows.jpg';
         newListItem.appendChild(newImage);
 
-       const newTitle = document.createElement('p');
+        const newTitle = document.createElement('p');
         newTitle.classList.add('title', 'fullTitle');
         newTitle.textContent = artist;
         newListItem.appendChild(newTitle);
@@ -20,16 +20,8 @@ const artistsPage = (function(){
         newListItem.appendChild(shuffleImg);
 
         shuffleImg.addEventListener('click', function() {
-        });
-
-        const playImg = document.createElement('img');
-        playImg.classList.add('image');
-        playImg.src = 'images/play.png';
-        newListItem.appendChild(playImg);
-
-        playImg.addEventListener('click', function() {
-           const songName = newTitle.textContent;
-           androidInterface.playSongTitled(songTitle);
+           const artistName = newTitle.textContent;
+           console.log('shuffle button clicked')
         });
 
         newTitle.addEventListener('click', function(){

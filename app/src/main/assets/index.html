@@ -18,7 +18,6 @@
 </header>
 
 <main id="container"></main>
-
 </body>
 
 <footer class="bottomBar">
@@ -27,10 +26,20 @@
         <div class="progressBarBG">
             <div class="progressBar"></div>
         </div>
+
+        <div class="songDetails">
+            <div class="songTitle">Song Title</div>
+            <div class="songArtist">Artist Name</div>
+        </div>
+        <img class="songBarImg" src="images/back.png" alt="shuffle">
+        <img class="songBarImg" src="images/back.png" alt="back">
+        <img class="songBarImg" src="images/play.png" alt="play">
+        <img class="songBarImg" src="images/next.png" alt="next">
+
     </div>
 
     <nav class="navBar">
-        <button class="navButton" onclick="window.location.href='index.html';">
+        <button class="navButton" onclick="showIndexPage()">
             <img class="navImage" src="images/home.png" alt="Home Icon">
             <span>Home</span>
         </button>

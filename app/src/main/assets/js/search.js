@@ -52,12 +52,10 @@ const searchPage = (function(){
         if (searchString.length <= 0) { return; }
         const songsString = androidInterface.getSongsStartingWith(searchString);
         const songs = parseSongsString(songsString);
-
         songs.forEach(song => {
             const listItem = addListItem(song);
             listItem.addEventListener('click', function() {
-                const songTitle = listItem.getElementsByClassName('title')[0];
-                androidInterface.playSongTitled(songTitle.textContent);
+                playSong(song);
             });
         })
     }

@@ -20,8 +20,7 @@ const mostPlayedPage = (function(){
         newListItem.appendChild(playImg);
 
         newListItem.addEventListener('click', function() {
-            const songName = newTitle.textContent;
-            androidInterface.playSongTitled(songName);
+            playSong(song);
         });
 
         buttonList.appendChild(newListItem);

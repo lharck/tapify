@@ -19,8 +19,6 @@ function parseSongsString(songsString) {
   return musicData;
 }
 
-
-
 // TODO: temporary hardcoding for album covers
 function getAlbumCover(albumName, root=".") {
     const albumCovers = {
@@ -40,3 +38,22 @@ function initList(){
     `;
 }
 
+function playSong(song){
+    androidInterface.playSongTitled(song.Title);
+
+    const cover =  getAlbumCover(song.Album);
+    const songPreview = document.getElementsByClassName("songPreview")[0];
+    songPreview.src = cover;
+
+    document.getElementsByClassName("songTitle")[0].textContent = song.Title
+    document.getElementsByClassName("songArtist")[0].textContent = song.Artist
+
+    const progressBar = document.getElementsByClassName("progressBar")[0];
+    console.log(progressBar)
+    progressBar.style.transition = 'none';
+    progressBar.style.width = "0%";
+    setTimeout(() => {
+      progressBar.style.transition = 'width 10s ease-in-out';
+      progressBar.style.width = "100%";
+    }, 50);
+}

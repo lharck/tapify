@@ -29,11 +29,9 @@ const playlistPage = (function(){
 
         playImg.addEventListener('click', function() {
            const songName = newTitle.textContent;
-           androidInterface.playSongTitled(songTitle);
         });
 
-        newTitle.addEventListener('click', function(){
-F        })
+        newTitle.addEventListener('click', function(){})
 
         buttonList.appendChild(newListItem);
     }

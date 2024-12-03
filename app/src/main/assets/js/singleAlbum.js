@@ -21,7 +21,7 @@ const singleAlbumPage = (function(){
 
         newListItem.addEventListener('click', function() {
             const songTitle = newListItem.querySelector('.title').textContent;
-            androidInterface.playSongTitled(songTitle);
+            playSong(song);
         });
 
         buttonList.appendChild(newListItem);
