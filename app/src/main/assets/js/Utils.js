@@ -54,49 +54,57 @@ function initList(){
         <ul class="buttonList"></ul>
     `;
 }
+let currentlyPlaying = null; // Keep track of the currently playing song
 
 function playSong(song) {
-    const playImg = document.querySelector(`.listItem img[src='./images/play.png']`);
-
-    // Change play icon to pause
-    if (playImg) {
-        playImg.src = './images/pause.png';
-        playImg.alt = 'Pause';
-    }
-
-    // Interact with Android interface to play the song
-    androidInterface.playSongTitled(song.Title);
-
-    // Update album cover and song details
-    const cover = getAlbumCover(song.Album);
     const songPreview = document.getElementsByClassName("songPreview")[0];
-    songPreview.src = cover;
-
-    document.getElementsByClassName("songTitle")[0].textContent = song.Title;
-    document.getElementsByClassName("songArtist")[0].textContent = song.Artist;
-
-    // Progress bar animation
     const progressBar = document.getElementsByClassName("progressBar")[0];
-    progressBar.style.transition = 'none';
-    progressBar.style.width = "0%";
-    setTimeout(() => {
-        progressBar.style.transition = 'width 60s ease-in-out';
-        progressBar.style.width = "100%";
-    }, 50);
+    const songTitle = document.getElementsByClassName("songTitle")[0];
+    const songArtist = document.getElementsByClassName("songArtist")[0];
 
-    // Pause song logic
-    playImg.addEventListener('click', function togglePause() {
-        if (playImg.src.includes('pause.png')) {
-            playImg.src = './images/play.png';
-            playImg.alt = 'Play';
-            androidInterface.pauseSong(); // Ensure the interface pauses the song
-        } else {
-            playImg.src = './images/pause.png';
-            playImg.alt = 'Pause';
-            androidInterface.playSongTitled(song.Title); // Resume song playback
+    if (currentlyPlaying && currentlyPlaying.Title === song.Title) {
+        // If the same song is playing, toggle pause
+        androidInterface.pauseSong(); // Pause the song through the interface
+        currentlyPlaying = null; // Reset the state
+        updatePlayPauseIcon(song, "play"); // Change icon to play
+    } else {
+        if (currentlyPlaying) {
+            // If a different song is already playing, stop it first
+            updatePlayPauseIcon(currentlyPlaying, "play");
+        }
+
+        // Play the new song
+        androidInterface.playSongTitled(song.Title); // Play song via the interface
+        currentlyPlaying = song; // Update currently playing
+
+        // Update UI
+        updatePlayPauseIcon(song, "pause");
+        songPreview.src = getAlbumCover(song.Album);
+        songTitle.textContent = song.Title;
+        songArtist.textContent = song.Artist;
+
+        progressBar.style.transition = 'none';
+        progressBar.style.width = "0%";
+        setTimeout(() => {
+            progressBar.style.transition = 'width 60s ease-in-out';
+            progressBar.style.width = "100%";
+        }, 50);
+    }
+}
+
+// Helper function to update the play/pause icon
+function updatePlayPauseIcon(song, action) {
+    const buttonList = document.querySelectorAll(".listItem");
+    buttonList.forEach(item => {
+        const title = item.querySelector(".title").textContent;
+        const playPauseIcon = item.querySelector("img[src='./images/play.png'], img[src='./images/pause.png']");
+
+        if (title === song.Title && playPauseIcon) {
+            playPauseIcon.src = action === "play" ? "./images/play.png" : "./images/pause.png";
         }
     });
 }
+
 
 function showMetadataEditor(song) {
     // Create overlay container

@@ -39,8 +39,8 @@
 }
 
 .icon {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.4));
     transition: transform var(--transition-speed), filter var(--transition-speed);
 }
@@ -87,8 +87,8 @@ span {
 .search-icon {
     position: absolute;
     right: 23px;
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
     opacity: 0.7;
     cursor: pointer;
 }
