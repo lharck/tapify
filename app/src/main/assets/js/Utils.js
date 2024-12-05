@@ -106,6 +106,12 @@ function showMetadataEditor(song) {
     const metadataContainer = document.createElement('div');
     metadataContainer.className = 'metadata-editor';
 
+    // Title for Metadata Editor
+    const title = document.createElement('h2');
+    title.textContent = 'Edit Song Metadata';
+    title.className = 'metadata-title';
+    metadataContainer.appendChild(title);
+
     // Populate metadata editor with fields
     for (let key in song) {
         const fieldWrapper = document.createElement('div');
@@ -113,7 +119,7 @@ function showMetadataEditor(song) {
 
         const label = document.createElement('label');
         label.textContent = key;
-        label.for = key;
+        label.htmlFor = key;
 
         const input = document.createElement('input');
         input.type = 'text';
@@ -131,7 +137,7 @@ function showMetadataEditor(song) {
 
     const okButton = document.createElement('button');
     okButton.className = 'okButton';
-    okButton.textContent = 'Ok';
+    okButton.textContent = 'Save';
 
     const cancelButton = document.createElement('button');
     cancelButton.className = 'cancelButton';
@@ -158,6 +164,7 @@ function showMetadataEditor(song) {
         document.body.removeChild(overlay);
     };
 }
+
 
 function addListItem(song) {
     const buttonList = document.querySelector('.buttonList');
