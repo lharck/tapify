@@ -1,9 +1,22 @@
+:root {
+    --primary-dark: #2a003d;
+    --primary-light: #8f06ee;
+    --primary-accent: #530d81;
+    --secondary-light: #f3e8ff;
+    --secondary-white: #ffffff;
+    --secondary-gray: #cccccc;
+
+    --font-family: 'Poppins', sans-serif;
+    --transition-speed: 0.3s;
+}
+
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 10px;
     width: 100%;
-    margin-top: 20px;
+    max-width: 800px;
+    padding: 5px;
 }
 
 .homeButton {
@@ -11,29 +24,36 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    color: #ffffff;
-    font-size: 16px;
-    text-align: center;
+    background-color: var(--primary-light);
+    color: var(--secondary-white);
+    border-radius: 10px;
     padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .homeButton:hover {
     transform: translateY(-5px);
-    background: linear-gradient(145deg, #8f06ee, #530d81);
-    box-shadow: 0 4px 12px rgba(143, 6, 238, 0.6);
+    box-shadow: 0 6px 12px var(--primary-accent);
 }
 
 .icon {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.4));
+    transition: transform var(--transition-speed), filter var(--transition-speed);
+}
+
+.icon:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+span {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ffffff;
 }
 
 .search-div {
@@ -71,4 +91,92 @@
     height: 24px;
     opacity: 0.7;
     cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(42, 0, 61, 0.85); /* Transparent dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.metadata-editor {
+    background-color: var(--primary-dark);
+    color: var(--secondary-white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 500px;
+}
+
+.field-wrapper label {
+    color: var(--secondary-light);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+input {
+    border-color: var(--primary-light);
+    flex: 1;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--primary-light);
+    color: var(--secondary-white);
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color var(--transition-speed);
+}
+
+input:focus {
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 5px var(--primary-light);
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.okButton,
+.cancelButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.okButton {
+    background: #007bff;
+    color: white;
+}
+
+.okButton:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+.cancelButton {
+    background: lightgray;
+    color: black;
+}
+
+.cancelButton:hover {
+    background: gray;
+    transform: scale(1.05);
 }
